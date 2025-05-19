@@ -79,7 +79,8 @@ export default function Footer() {
 
         {/* Footer Links */}
         <div className="md:col-span-2">
-          <ul className="space-y-2 text-sm">
+          <span className="font-bold">Services</span>
+          <ul className="space-y-1 mt-2 text-sm">
             {serviceLinks.map((link) => (
               <li key={link.label}>
                 <Link
@@ -94,7 +95,8 @@ export default function Footer() {
         </div>
 
         <div className="md:col-span-2">
-          <ul className="space-y-2 text-sm">
+          <span className="font-bold">Entreprise</span>
+          <ul className="space-y-1 mt-2 text-sm">
             {companyLinks.map((link) => (
               <li key={link.label}>
                 <Link

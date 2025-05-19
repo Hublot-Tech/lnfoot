@@ -3,25 +3,28 @@ import Link from 'next/link'
 
 export default function Header() {
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "#", label: "Join Us" },
-    { href: "#", label: "Customer Care" },
-    { href: "#", label: "Reach Out" },
-    { href: "#", label: "About Us" }
+    { href: "/", label: "Acceuil" },
+    { href: "/news", label: "Actus" },
+    { href: "/shop", label: "Shop" },
+    { href: "scores", label: "Scores" },
+    { href: "/gallery", label: "Gallerie" },
+    { href: "contact", label: "Contact" }
+
   ];
 
   return (
-    <header className="bg-black text-white flex items-center justify-between px-8 py-2.5 font-sans min-h-[48px]">
-      <div className="flex items-center gap-2">
-        <span className="font-bold text-lg tracking-wide">
-          <span className="text-white">⠿</span> LET'SREAD
-        </span>
+    <header className="bg-[#0f1038] text-white flex items-center justify-between px-8 py-2.5 font-sans min-h-[48px]">
+      <div className="flex items-center">
+        <img className="h-10" alt="Football News" src="/ln.png" />
+        <a className="btn btn-ghost text-2xl font-semibold text-white transition duration-300 hover:text-orange-500" href="/">
+          LN FOOT
+        </a>
       </div>
       <nav className="flex gap-7 items-center">
         {navLinks.map((link, index) => (
-          <Link 
+          <Link
             key={index}
-            href={link.href} 
+            href={link.href}
             className="text-white no-underline text-[15px] hover:text-gray-300 transition-colors"
           >
             {link.label}

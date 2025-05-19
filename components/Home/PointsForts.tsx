@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import { Dialog, DialogContent } from "@/components/motion-primitives/dialog"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Play } from "lucide-react"

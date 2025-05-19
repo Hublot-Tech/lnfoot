@@ -63,7 +63,7 @@ export default async function NewsPage({
               {latestNews && formatDate(latestNews.publishedAt ?? new Date())}
             </p>
             {latestNews?.summary && ( // Add a check for summary
-              <p className="text-lg text-gray-700">{latestNews.summary}</p>
+              (<p className="text-lg text-gray-700">{latestNews.summary}</p>)
             )}
           </div>
         </article>

@@ -65,7 +65,7 @@ export default function ArticleCard({ article, isMain }: ArticleCardProps) {
           {article.publishedAt && <span className="mx-1">&bull;</span>}
           <span>{formatRelativeDate(article.publishedAt || article.createdAt)}</span>
         </div>
-        <h3 className="text-2xl font-semibold mb-2 group-hover:text-orange-500 transition-colors">
+        <h3 className="text-2xl font-semibold mb-2 text-primary group-hover:text-orange-500 transition-colors">
           {article.title}
         </h3>
         {article.summary && (

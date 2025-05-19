@@ -13,7 +13,7 @@ export default async function LatestNews() {
     <section className="py-8">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold">Latest news</h2>
+          <h2 className="text-3xl text-orange-500 font-bold">Latest news</h2>
           <a href="/news" className="text-orange-500 hover:text-orange-600">
             See more &rarr;
           </a>

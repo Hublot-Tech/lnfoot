@@ -9,8 +9,26 @@ export function getBaseUrl() {
     : "http://localhost:3000";
 }
 
-export const formatDate = (date: Date) => {
-  return date.toLocaleDateString("fr", {
+export const formatDate = (date: Date | string | number | null | undefined) => {
+  if (!date) {
+    return '';
+  }
+
+  let dateObject: Date;
+  
+  if (date instanceof Date) {
+    dateObject = date;
+  } else {
+    // Tenter de convertir en objet Date
+    dateObject = new Date(date);
+  }
+  
+  // Vérifier si la conversion est valide
+  if (isNaN(dateObject.getTime())) {
+    return '';
+  }
+  
+  return dateObject.toLocaleDateString("fr", {
     day: "2-digit",
     month: "long",
     year: "numeric",

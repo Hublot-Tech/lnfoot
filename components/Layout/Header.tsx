@@ -13,11 +13,11 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-[#0f1038] text-white flex items-center justify-between px-8 py-2.5 font-sans min-h-[48px]">
+    <header className="bg-[#0f1038] text-white flex items-center justify-between px-8 lg:px-24 py-2.5 font-sans min-h-[48px]">
       <div className="flex items-center">
+        <a className=" flex items-center btn-ghost text-2xl font-semibold text-white transition duration-300 hover:text-orange-500" href="/">
         <img className="h-10" alt="Football News" src="/ln.png" />
-        <a className="btn btn-ghost text-2xl font-semibold text-white transition duration-300 hover:text-orange-500" href="/">
-          LN FOOT
+           FOOT
         </a>
       </div>
       <nav className="flex gap-7 items-center">

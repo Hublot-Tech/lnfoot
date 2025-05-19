@@ -2,7 +2,7 @@ import {apiClient} from "@/app/api/api-client";
 import ArticleCard from "@/components/News/ArticleCard"; // Assuming ArticleCard will be in components/News
 
 export default async function LatestNews() {
-  const articles = await apiClient.ecommerceArticles.findAll();
+  const articles = await apiClient.newsArticles.findAll();
 
   // Assuming the API returns an array of articles.
   // We'll take the main article and three smaller ones as in the image.

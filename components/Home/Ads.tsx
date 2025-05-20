@@ -2,7 +2,6 @@ import React, { Suspense } from 'react'
 import { apiClient } from '@/app/api/api-client'
 import { Advertisement } from '@/app/api/types'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 
 async function Ads() {
@@ -11,17 +10,15 @@ async function Ads() {
   if (!advertisements.length) {
     return null
   }
-
   return (
-    <section className=" w-full  my-8 px-4">
+    <section className="w-full my-8 px-4 lg:px-24 max-w-full">
       <Suspense fallback={<div className="h-48 md:h-64 w-full bg-gray-200 animate-pulse rounded-lg" />}>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8  w-full">
           {advertisements.map((ad) => (
             <AdCard key={ad.id} advertisement={ad} />
           ))}
         </div>
       </Suspense>
-
     </section>
   )
 }
@@ -29,6 +26,7 @@ async function Ads() {
 function AdCard({ advertisement }: { advertisement: Advertisement }) {
   return (
     <Link href={advertisement.referenceUrl || '#'} className="w-full">
+      <span className='w-full flex self-center text-foreground italic text-xs text-shadow-accent'>Publicité Partenaire</span>
       <div
         className="relative h-48 md:h-64 w-full overflow-hidden rounded-lg transition-transform hover:scale-[1.02] group shadow-md"
         style={{
@@ -44,7 +42,7 @@ function AdCard({ advertisement }: { advertisement: Advertisement }) {
         <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
           <h3 className="text-xl md:text-2xl font-bold mb-2">{advertisement.title}</h3>
           {advertisement.description && (
-            <p className="text-sm md:text-base mb-4 line-clamp-2">{advertisement.description}</p>
+            <p className="text-sm md:text-base mb-4 max-w-2xl line-clamp-2">{advertisement.description}</p>
           )}
           <Button
             variant="outline"

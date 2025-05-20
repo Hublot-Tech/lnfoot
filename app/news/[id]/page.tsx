@@ -5,7 +5,6 @@ import { formatDate } from "@/lib/utilities";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import DOMPurify from "isomorphic-dompurify";
-import { NewsCard } from "@/components/Sections/news";
 import { calculateReadingTime, formatReadingTime } from "@/lib/readingTime";
 import { ChevronRight, Clock } from "lucide-react";
 
@@ -143,7 +142,7 @@ export default async function NewsPage({ params }: UserPageProps) {
         {/* More articles section */}
         <div className="mt-12">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold">Plus d'articles</h2>
+            <h2 className="text-2xl font-bold">Plus d&lsquo;articles</h2>
             <Link href="/news" className="text-blue-600 hover:underline">
               Voir tout →
             </Link>

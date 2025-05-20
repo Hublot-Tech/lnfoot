@@ -7,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Play } from "lucide-react"
 import type { Highlight } from "@/app/api/types"
 import { getYouTubeEmbedUrl, isYouTubeUrl } from "@/lib/utilities";
+import Link from "next/link"
 
 
 interface HighlightsClientProps {
@@ -30,7 +31,13 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
   const carouselVideos = highlights.slice(1)
 
   return (
-    <div className="mx-auto py-8 px-4 lg:px-24">
+    <div className="mx-auto py-20 px-4 lg:px-24">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-3xl uppercase text-orange-500 font-bold">POINTS FORTS</h2>
+        <Link href="/news" className="text-orange-500 hover:text-orange-600">
+          voir plus &rarr;
+        </Link>
+      </div>
       {/* Vidéo principale */}
       {featuredVideo && (
         <div className="mb-8">
@@ -98,12 +105,12 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
         <DialogContent className="sm:max-w-[800px] p-0 bg-black">
           {selectedVideo && (
             <div className="aspect-video w-full">              <iframe
-                src={`${selectedVideo}?autoplay=1`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              ></iframe>
+              src={`${selectedVideo}?autoplay=1`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
             </div>
           )}
         </DialogContent>

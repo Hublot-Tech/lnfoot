@@ -1,17 +1,18 @@
 import Ads from "@/components/Home/Ads";
-import {Gallery} from "@/components/Home/Gallery";
 import GetApp from "@/components/Home/GetApp";
 import Hero from "@/components/Home/Hero";
-import LatestNews from "@/components/Home/LatestNews"; // Import the new component
+import LatestNews from "@/components/Home/LatestNews";
 import PointsForts from "@/components/Home/PointsForts";
+import ShopCarousel from "@/components/Home/ShopCarousel";
 
 export default function Home() {
   return (
-    <main className="min-h-screen  justify-between">
+    <main className="min-h-screen justify-between">
       <Hero />
       <LatestNews /> 
-      <Ads />
       <PointsForts />
+      <ShopCarousel />
+      <Ads />
       {/* <Gallery /> */}
       <GetApp />
     </main>

@@ -1,6 +1,5 @@
 import Image from "next/legacy/image";
 import Link from 'next/link';
-import { Badge } from '@/components/ui/badge'; // Assuming you have a Badge component
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'; // Assuming you have an Avatar component
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';

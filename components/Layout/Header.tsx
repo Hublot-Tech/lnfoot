@@ -15,10 +15,10 @@ export default function Header() {
   return (
     <header className="bg-[#0f1038] text-white flex items-center justify-between px-8 lg:px-24 py-2.5 font-sans min-h-[48px]">
       <div className="flex items-center">
-        <a className=" flex items-center btn-ghost text-2xl font-semibold text-white transition duration-300 hover:text-orange-500" href="/">
+        <Link className=" flex items-center btn-ghost text-2xl font-semibold text-white transition duration-300 hover:text-orange-500" href="/">
         <img className="h-10" alt="Football News" src="/ln.png" />
            FOOT
-        </a>
+        </Link>
       </div>
       <nav className="flex gap-7 items-center">
         {navLinks.map((link, index) => (

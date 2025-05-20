@@ -1,12 +1,17 @@
-import Image from "next/legacy/image"
-import { Dialog, DialogContent } from "@/components/motion-primitives/dialog"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { Play } from "lucide-react"
 import { apiClient } from "@/app/api/api-client"
-import type { Highlight } from "@/app/api/types"
 import { HighlightsClient } from "./PointsFortsClient"
+import { Suspense } from "react"
+import { HighlightsSkeleton } from "@/components/ui/skeletons"
 
-export default async function PointsForts() {
+export default function PointsForts() {
+  return (
+    <Suspense fallback={<HighlightsSkeleton />}>
+      <PointsFortsContent />
+    </Suspense>
+  )
+}
+
+async function PointsFortsContent() {
   const data = await apiClient.highlights.findAll()
   
   // Trier par date de publication décroissante et limiter à 9 vidéos

@@ -10,8 +10,6 @@ import {
   Section,
   Text,
   Tailwind,
-  Row,
-  Column,
 } from '@react-email/components';
 
 const Email = () => {
@@ -45,7 +43,7 @@ const Email = () => {
                   Les dernières tendances du football
                 </li>
                 <li className="text-[16px] leading-[24px] text-[#333] mb-[8px]">
-                  Des conseils d'experts pour améliorer votre jeu
+                  Des conseils d&lsquo;experts pour améliorer votre jeu
                 </li>
                 <li className="text-[16px] leading-[24px] text-[#333] mb-[8px]">
                   Des offres exclusives sur nos produits

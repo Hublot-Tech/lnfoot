@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { apiClient } from "@/app/api/api-client";
 import Hero from "@/components/Shop/Hero";
 import { Button } from "@/components/ui/button";
@@ -6,10 +6,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import type { EcommerceArticle } from "../api/types";
+import { ShopGridSkeleton } from "@/components/ui/skeletons";
 
-export default async function ShopPage() {
-  const products = await apiClient.ecommerceArticles.findAll();
-
+export default function ShopPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -49,36 +48,10 @@ export default async function ShopPage() {
               <Link href="/shop/all">Voir tout</Link>
             </Button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.slice(0, 8).map((product: EcommerceArticle) => (
-              <Card key={product.id} className="group">
-                <Link href={`/shop/${product.id}`}>
-                  <div className="relative aspect-square overflow-hidden">
-                    <img
-                      src={product.imageUrl || "/placeholder.svg"}
-                      alt={product.title}
-                      className="transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {product.price && (
-                      <Badge className="absolute top-4 right-4 bg-black text-white">
-                        {product.price}€
-                      </Badge>
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold mb-2 group-hover:text-orange-500 transition-colors">
-                      {product.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 line-clamp-2">
-                      {product.summary || product.content}
-                    </p>
-                  </div>
-                </Link>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+          <Suspense fallback={<ShopGridSkeleton count={8} />}>
+            <FeaturedProducts />
+          </Suspense>      </div>
+    </section>
 
       {/* Benefits Section */}
       <section className="py-16 bg-gray-50">
@@ -134,7 +107,41 @@ export default async function ShopPage() {
             </form>
           </div>
         </div>
-      </section>
+      </section>    </div>
+  );
+}
+
+async function FeaturedProducts() {
+  const products = await apiClient.ecommerceArticles.findAll();
+  
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {products.slice(0, 8).map((product: EcommerceArticle) => (
+        <Card key={product.id} className="group">
+          <Link href={`/shop/${product.id}`}>
+            <div className="relative aspect-square overflow-hidden">
+              <img
+                src={product.imageUrl || "/placeholder.svg"}
+                alt={product.title}
+                className="transform group-hover:scale-105 transition-transform duration-300"
+              />
+              {product.price && (
+                <Badge className="absolute top-4 right-4 bg-black text-white">
+                  {product.price}€
+                </Badge>
+              )}
+            </div>
+            <div className="p-4">
+              <h3 className="font-semibold mb-2 group-hover:text-orange-500 transition-colors">
+                {product.title}
+              </h3>
+              <p className="text-sm text-gray-600 line-clamp-2">
+                {product.summary || product.content}
+              </p>
+            </div>
+          </Link>
+        </Card>
+      ))}
     </div>
   );
 }

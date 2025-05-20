@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { Banner } from "@/components/Layout/Banner";
 import Navbar from "@/components/Layout/FirstNavbar";

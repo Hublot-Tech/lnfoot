@@ -5,12 +5,13 @@ import { notFound } from 'next/navigation'
 import { Download } from 'lucide-react'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default async function ShopItem({ params }: PageProps) {
+export default async function ShopItem(props: PageProps) {
+  const params = await props.params;
   const article = await apiClient.ecommerceArticles.findOne(params.id)
   console.log('Article:', article)
 

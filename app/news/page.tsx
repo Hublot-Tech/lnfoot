@@ -12,11 +12,12 @@ import { ArticleGridSkeleton, ArticleSkeleton } from "@/components/ui/skeletons"
 // Nombre d'articles par page
 const ITEMS_PER_PAGE = 6;
 
-export default function NewsPage({
-  searchParams,
-}: {
-  searchParams: { page?: string };
-}) {
+export default async function NewsPage(
+  props: {
+    searchParams: Promise<{ page?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const currentPage = Number(searchParams.page) || 1;
 
   return (

@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
-		<header className="fixed top-2 w-full bg-transparent z-50 mt-2 flex flex-col items-center">
+		<header className="fixed top-6 w-full bg-transparent z-50 mt-2 flex flex-col items-center">
 			<div className="flex items-center bg-blue-950 rounded w-full max-w-4xl px-8">
 				{/* Logo */}
 				<Link href="/" className="flex items-center py-2">

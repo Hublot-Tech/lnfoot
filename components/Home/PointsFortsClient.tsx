@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/legacy/image"
-import { Dialog, DialogContent } from "@/components/motion-primitives/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/motion-primitives/dialog"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Play } from "lucide-react"
 import type { Highlight } from "@/app/api/types"
@@ -46,8 +46,8 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
             onClick={() => openVideoModal(featuredVideo.videoUrl)}
           >
             <Image
-              src={"/placeholder.svg"}
-              alt={featuredVideo.title || ""}
+              src={featuredVideo.thumbnailUrl ?? "/placeholder.svg"}
+              alt={featuredVideo.title ?? ""}
               layout="fill"
               objectFit="cover"
               className="transition-transform group-hover:scale-105"
@@ -76,8 +76,8 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
                   onClick={() => openVideoModal(video.videoUrl)}
                 >
                   <Image
-                    src={"/placeholder.svg"}
-                    alt={video.title || ""}
+                    src={video.thumbnailUrl ?? "/placeholder.svg"}
+                    alt={video.title ?? ""}
                     layout="fill"
                     objectFit="cover"
                     className="transition-transform group-hover:scale-105"
@@ -103,14 +103,16 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
       {/* Modal pour la lecture de vidéo */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="sm:max-w-[800px] p-0 bg-black">
+          <DialogTitle className="sr-only">Lecteur Vidéo</DialogTitle>
           {selectedVideo && (
-            <div className="aspect-video w-full">              <iframe
-              src={`${selectedVideo}?autoplay=1`}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            ></iframe>
+            <div className="aspect-video w-full">
+              <iframe
+                src={`${selectedVideo}?autoplay=1`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
             </div>
           )}
         </DialogContent>

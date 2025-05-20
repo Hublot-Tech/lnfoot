@@ -28,7 +28,7 @@ const Banner = ({
   if (!isVisible) return null;
 
   return (
-    <section className="w-full border-b font-mono bg-black text-white px-4 py-3 shadow-sm">
+    <section className="w-full border-b font-mono bg-black text-white px-4 py-1 shadow-sm">
       <div className="flex items-center justify-between gap-2">
         <div className="flex-1 text-center">
           <span className="text-sm">

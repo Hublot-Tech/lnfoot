@@ -48,7 +48,7 @@ export default async function NewsPage({
 
         {/* Latest News */}
         <article className="mb-12 rounded-lg bg-white p-6 shadow-npnd">
-          <h2 className="mb-6 text-3xl font-bold text-gray-800">
+          <h2 className="mb-6 text-3xl font-bold  uppercase text-orange-400">
             {latestNews?.title}
           </h2>
           <div className="aspect-video relative mb-6 overflow-hidden rounded-lg">

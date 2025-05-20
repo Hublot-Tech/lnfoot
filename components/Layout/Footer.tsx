@@ -64,13 +64,14 @@ export default function Footer() {
             >
               Contact nous
             </Link>
-            <Link
-              href="#"
+            <a
+              download={true}
+              href="https://lnfoot-img.hublots.co/app-release/app-release.apk"
               className="border border-orange-500 text-orange-500 px-6 py-3 rounded-md text-sm font-medium uppercase flex items-center gap-2 hover:bg-white/10 transition-colors"
             >
               <FaGooglePlay size={20} className="text-white" />
               Téléchargez notre application
-            </Link>
+            </a>
           </div>
         </div>
 

@@ -80,7 +80,7 @@ export default async function NewsPage({ params }: UserPageProps) {
           {/* Main article content */}
           <div className="lg:col-span-2">
             <div className="rounded-lg bg-white p-6 shadow-md">
-              <h1 className="mb-4 text-2xl font-bold leading-tight md:text-3xl">{latestNews?.title}</h1>
+              <h1 className="mb-4 text-2xl text-primary font-bold uppercase leading-tight md:text-3xl">{latestNews?.title}</h1>
               
               <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-gray-600">
                 <span>{formatDate(latestNews.createdAt ?? new Date())}</span>
@@ -116,7 +116,7 @@ export default async function NewsPage({ params }: UserPageProps) {
           {/* Sidebar with recent articles */}
           <div className="lg:col-span-1">
             <div className="rounded-lg bg-white p-6 shadow-md">
-              <h2 className="mb-6 border-b border-gray-200 pb-2 text-xl font-bold">Articles Récents</h2>
+              <h2 className="mb-6 border-b border-gray-200 pb-2 text-xl text-secondary font-bold">Articles Récents</h2>
               <div className="space-y-6">
                 {recentArticles.map((article, index) => (
                   <div key={article.id} className={`flex gap-4 ${index < recentArticles.length - 1 ? 'border-b border-gray-100 pb-4' : ''}`}>

@@ -43,7 +43,7 @@ export default function ArticleCard({ article, isMain }: ArticleCardProps) {
   if (isMain) {
     return (
       <Link href={`/news/${article.id}`} className="block group">
-        <div className="relative aspect-video mb-4">
+        <div className="relative h-98 mb-4">
           {article.imageUrl && (
             <Image
               src={article.imageUrl}
@@ -61,11 +61,11 @@ export default function ArticleCard({ article, isMain }: ArticleCardProps) {
               <AvatarFallback>{article.authorName?.substring(0, 1) || 'A'}</AvatarFallback>
             </Avatar>
           )}
-          <span>LN FOOT</span>
+
           {article.publishedAt && <span className="mx-1">&bull;</span>}
-          <span>{formatRelativeDate(article.publishedAt || article.createdAt)}</span>
+          <span className="self-end">{formatRelativeDate(article.publishedAt || article.createdAt)}</span>
         </div>
-        <h3 className="text-2xl font-semibold mb-2 text-primary group-hover:text-orange-500 transition-colors">
+        <h3 className="text-2xl max-w-xl font-semibold mb-2 text-primary group-hover:text-orange-500 transition-colors">
           {article.title}
         </h3>
         {article.summary && (
@@ -76,6 +76,7 @@ export default function ArticleCard({ article, isMain }: ArticleCardProps) {
 
         <div className="text-xs text-gray-500">
           <span>{article.source}</span>
+          <span>LN FOOT</span>
           {article && <span className="mx-1">&bull;</span>}
           <span>{formatReadingTime(calculateReadingTime(article.content))}</span>
         </div>
@@ -85,40 +86,37 @@ export default function ArticleCard({ article, isMain }: ArticleCardProps) {
 
   // Smaller card variant
   return (
-    <Link href={`/news/${article.id}`} className="block group">
-      <div className="flex gap-4">
+    <Link href={`/news/${article.id}`} className="block group border-b border-gray shadow bg-accent p-3">
+      <div className="flex items-center gap-4 p-2 hover:bg-gray-50">
         {article.imageUrl && (
-          <div className="w-1/3 relative aspect-square">
-            <Image
+          <div className="relative w-24 h-24 flex-shrink-0">
+            <img
               src={article.imageUrl}
               alt={article.title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-md"
+              className="rounded-md object-cover w-full h-full"
             />
           </div>
         )}
-        <div className="w-2/3">
-          {article.summary && (
-            <div className="flex items-center text-xs text-gray-500 mb-1">
-              <span className="font-semibold mr-1">{article.category}</span>
-              {article.publishedAt && <span className="mx-1">&bull;</span>}
-              <span>{formatRelativeDate(article.publishedAt || article.createdAt)}</span>
-            </div>
-          )}
-          <h4 className="font-semibold group-hover:text-orange-500 transition-colors">
+        <div className="flex-grow min-w-0">
+          <h4 className="font-medium text-orange-500 mb-1 truncate">
             {article.title}
           </h4>
-          <p>
-            {article.summary?.slice(0, 100)}{article.summary && article.summary.length > 100 ? '...' : ''}
-          </p>
-          <div className="text-xs text-gray-500 mt-1">
-            <span>{article.source}</span>
-            {article &&
+          {article.summary && (
+            <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+              {article.summary}
+            </p>
+          )}
+          <div className="flex items-baseline-last text-xs text-gray-500 gap-2">
+            {article.category && <span className="font-medium">{article.category}</span>}
+            <div className="flex flex-col items-center gap-1">
+              <span>{formatRelativeDate(article.publishedAt || article.createdAt)}</span>
+            </div>
+            {article.content && (
               <>
-                <span className="mx-1">&bull;</span>
+                <span>&bull;</span>
                 <span>{formatReadingTime(calculateReadingTime(article.content))}</span>
-              </>}
+              </>
+            )}
           </div>
         </div>
       </div>

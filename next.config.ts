@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'lnfoot-img.hublots.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.youtube.com'
+      }
     ],
   },
 };

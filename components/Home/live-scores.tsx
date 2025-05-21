@@ -1,5 +1,4 @@
 import React from "react";
-import { SectionTitle } from "../common/section-title";
 import type { Fixtures } from "@/app/api/types";
 import { apiClient } from '@/app/api/api-client';
 import { formatDate } from "@/lib/utilities";

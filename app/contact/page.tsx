@@ -1,8 +1,54 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from 'react'
 import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa'
 import { FaLocationDot, FaPhone, FaEnvelope } from 'react-icons/fa6'
 
 export default function ContactPage() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Une erreur est survenue lors de l\'envoi');
+      }
+
+      // Réinitialiser le formulaire
+      setName('');
+      setEmail('');
+      setMessage('');
+      setSuccess(true);
+
+      // Masquer le message de succès après quelques secondes
+      setTimeout(() => {
+        setSuccess(false);
+      }, 5000);
+
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <main className="min-h-screen">
@@ -59,23 +105,63 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-          </div>            <div className="bg-[rgba(187,187,187,0.2)] p-6 rounded-lg shadow-md w-full md:w-1/3 mt-8 md:mt-0">
+          </div>
+          <div className="bg-[rgba(187,187,187,0.2)] p-6 rounded-lg shadow-md w-full md:w-1/3 mt-8 md:mt-0">
             <h2 className="text-2xl font-bold mb-4">ENVOYER UN MESSAGE</h2>
-            <form>
+
+            {success && (
+              <div className="mb-4 p-3 bg-green-100 text-green-800 rounded border border-green-200">
+                Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.
+              </div>
+            )}
+
+            {error && (
+              <div className="mb-4 p-3 bg-red-100 text-red-800 rounded border border-red-200">
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <input type="text" placeholder="NOM" className="w-full p-3 bg-[rgba(187,187,187,0.2)] border-b border-gray-500 rounded" />
+                <input
+                  type="text"
+                  placeholder="NOM"
+                  className="w-full p-3 bg-[rgba(187,187,187,0.2)] border-b border-gray-500 rounded"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
               </div>
               <div className="mb-4">
-                <input type="email" placeholder="ADRESSE E-MAIL" className="w-full p-3 bg-[rgba(187,187,187,0.2)] border-b border-gray-500 rounded" />
+                <input
+                  type="email"
+                  placeholder="ADRESSE E-MAIL"
+                  className="w-full p-3 bg-[rgba(187,187,187,0.2)] border-b border-gray-500 rounded"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </div>
               <div className="mb-4">
-                <textarea placeholder="MESSAGE" className="w-full p-3 bg-[rgba(187,187,187,0.2)] border-b border-gray-500 rounded"></textarea>
+                <textarea
+                  placeholder="MESSAGE"
+                  className="w-full p-3 bg-[rgba(187,187,187,0.2)] border-b border-gray-500 rounded min-h-[120px]"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                ></textarea>
               </div>
               <div className='mb-4 text-xs text-gray-600'>
                 En soumettant ce formulaire, vous acceptez d&lsquo;être contacté par notre équipe concernant nos produits et services d&lsquo;équipement sportif.
               </div>
               <div className='flex justify-end'>
-                <button type="submit" className="w-1/4 bg-orange-600 text-white p-3 rounded">ENVOYER</button>
+                <button
+                  type="submit"
+                  className={`w-1/3 bg-orange-600 hover:bg-orange-700 text-white p-3 rounded flex items-center justify-center transition-all ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  disabled={loading}
+                >
+                  {loading ? 'ENVOI...' : 'ENVOYER'}
+                </button>
               </div>
             </form>
           </div>

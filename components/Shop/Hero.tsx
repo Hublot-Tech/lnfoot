@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative h-[600px] bg-gray-900">
       <div className="absolute inset-0">
         <Image
-          src="/placeholder.svg"
+          src="/maillots.jpg"
           alt="Shop Banner"
           layout="fill"
           objectFit="cover"

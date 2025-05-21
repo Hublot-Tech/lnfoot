@@ -9,6 +9,17 @@ import type { EcommerceArticle } from "../api/types";
 import { ShopGridSkeleton } from "@/components/ui/skeletons";
 
 export default function ShopPage() {
+  const cats = [
+    {label: "Maillots",
+      imageSrc: "/maillots.jpg"
+    }, 
+    {label:"Équipement",
+      imageSrc: "/alteres.jpg"
+    }, 
+    {label:"Godasses",
+      imageSrc: "/godasses.png"
+    }
+  ]
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -19,19 +30,19 @@ export default function ShopPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Catégories Populaires</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {["Maillots", "Équipement", "Accessoires"].map((category) => (
+            {cats.map((category) => (
               <div
-                key={category}
+                key={category.label}
                 className="relative h-80 group cursor-pointer overflow-hidden rounded-2xl"
               >
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all z-10" />
                 <img
-                  src="/placeholder.svg"
-                  alt={category}
+                  src={category.imageSrc}
+                  alt={category.label}
                   className="transform group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <h3 className="text-2xl font-bold text-white">{category}</h3>
+                  <h3 className="text-2xl font-bold text-white">{category.label}</h3>
                 </div>
               </div>
             ))}

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative h-[600px] bg-gray-900">
+    <section className="relative min-h-screen bg-gray-900">
       <div className="absolute inset-0">
         <Image
           src="/maillots.jpg"
@@ -16,7 +16,7 @@ export default function Hero() {
           className="opacity-50"
         />
       </div>
-      <div className="relative z-10 h-full container mx-auto px-4 flex flex-col justify-center">
+      <div className="relative z-10 h-full container mx-auto px-4 flex flex-col justify-center py-20">
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 max-w-2xl">
           Découvrez notre collection exclusive LN FOOT
         </h1>

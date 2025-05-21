@@ -64,7 +64,7 @@ export const AdminNotificationEmail = ({
                 </Section>
 
                 <Text className="text-[16px] text-gray-700">
-                  N'oubliez pas de répondre au client dans les plus brefs délais.
+                  N&apos;oubliez pas de répondre au client dans les plus brefs délais.
                 </Text>
               </Section>
 

@@ -43,6 +43,7 @@ export default function ContactPage() {
         setSuccess(false);
       }, 5000);
 
+      /* eslint-disable @typescript-eslint/no-explicit-any */
     } catch (err: any) {
       setError(err.message);
     } finally {

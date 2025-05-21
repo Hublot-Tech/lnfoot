@@ -59,7 +59,7 @@ export const ContactResponseEmail = ({
                   Bonjour {name},
                 </Text>
                 <Text className="text-[16px] text-gray-700 mb-[16px]">
-                  Merci d'avoir contacté {companyName}. Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais, généralement sous 24 à 48 heures ouvrables.
+                  Merci d&apos;avoir contacté {companyName}. Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais, généralement sous 24 à 48 heures ouvrables.
                 </Text>
                 <Text className="text-[16px] text-gray-700 mb-[24px]">
                   Voici un récapitulatif des informations que vous nous avez fournies :
@@ -82,14 +82,14 @@ export const ContactResponseEmail = ({
                         <strong>Message :</strong>
                       </Text>
                       <Text className="text-[14px] text-gray-700 italic mt-[8px] mb-0">
-                        "{message}"
+                        &quot;{message}&quot;
                       </Text>
                     </Column>
                   </Row>
                 </Section>
 
                 <Text className="text-[16px] text-gray-700 mb-[24px]">
-                  Si vous avez besoin d'une assistance immédiate, n'hésitez pas à nous appeler directement au {companyPhone}.
+                  Si vous avez besoin d&apos;une assistance immédiate, n&apos;hésitez pas à nous appeler directement au {companyPhone}.
                 </Text>
 
                 <Section className="text-center mb-[32px]">

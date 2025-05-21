@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   try {
     // Extraire les données du formulaire
     const { name, email, message } = await req.json();
-    
+
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Tous les champs sont obligatoires" },
@@ -49,6 +49,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       { success: true, message: "Message envoyé avec succès" }
     );
+    /* eslint-disable @typescript-eslint/no-explicit-any */
   } catch (error: any) {
     console.error("Erreur d'envoi d'email:", error);
     return NextResponse.json(

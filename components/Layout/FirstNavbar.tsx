@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const navbarItems = [
 	{ name: "Accueil", path: "/" },
 	{ name: "Actualités", path: "/news" },
-	{ name: "Scores", path: "/scores" },
+	{ name: "Scores", path: "/live-scores" },
 	{ name: "Shop", path: "/shop" },
 	{ name: "Contact", path: "/contact" },
 ];

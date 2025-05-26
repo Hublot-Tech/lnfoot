@@ -23,10 +23,9 @@ async function safeFetch<T>(url: string): Promise<T | null> {
       return null;
     }
 
-    const {
-      result: { data },
-    } = (await res.json()) as ApiResponse<T>;
-    return data.json ?? null;
+    const json = (await res.json()) as ApiResponse<T>;
+    return json.result?.data.json ?? json as T ?? null;
+
   } catch (err) {
     console.error(`[safeFetch] Error fetching ${url}:`, err);
     return null;

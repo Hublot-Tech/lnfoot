@@ -35,7 +35,7 @@ export function CarouselWithAutoplay({ articles }: { articles: EcommerceArticle[
                   {article.imageUrl ? (
                     <img
                       src={article.imageUrl}
-                      alt={article.title}
+                      alt={article.name}
                       className="h-full w-full object-cover transition-all hover:scale-105"
                     />
                   ) : (
@@ -45,9 +45,9 @@ export function CarouselWithAutoplay({ articles }: { articles: EcommerceArticle[
                   )}
                 </div>
                 <CardContent className="p-4">
-                  <h3 className="font-bold text-lg mb-2 line-clamp-1">{article.title}</h3>
-                  {article.summary && (
-                    <p className="text-sm text-gray-600 line-clamp-2">{article.summary}</p>
+                  <h3 className="font-bold text-lg mb-2 line-clamp-1">{article.name}</h3>
+                  {article.description && (
+                    <p className="text-sm text-gray-600 line-clamp-2">{article.description}</p>
                   )}
                   <div className="mt-4 flex justify-between items-center">
                     <span className="font-bold text-orange-500">{article.price || "Prix non disponible"}</span>

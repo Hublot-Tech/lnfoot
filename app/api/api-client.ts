@@ -68,7 +68,7 @@ export const apiClient = {
     async findAll() {
       return (
         (await safeFetch<EcommerceArticle[]>(
-          `${baseUrl}/api/trpc/ecommerceArticles.latest`,
+          `https://lnfoot-api.hublots.co/api/products`,
         )) ?? []
       );
     },

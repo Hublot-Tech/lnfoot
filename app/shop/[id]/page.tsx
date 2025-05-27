@@ -28,7 +28,7 @@ export default async function ShopItem(props: PageProps) {
             <div className="relative aspect-square w-full bg-gray-100 rounded-lg overflow-hidden">
               <img
                 src={article.imageUrl || '/placeholder.svg'}
-                alt={article.title}
+                alt={article.description}
                 className="object-cover"
               />
             </div>
@@ -54,7 +54,7 @@ export default async function ShopItem(props: PageProps) {
               <div className="w-16 h-16 relative bg-gray-100">
                 <img
                   src={article.imageUrl || '/placeholder.svg'}
-                  alt={article.title}
+                  alt={article.name}
                   className="object-cover"
                 />
               </div>
@@ -73,7 +73,7 @@ export default async function ShopItem(props: PageProps) {
 
         {/* Product info section */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center ">
-          <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
+          <h1 className="text-3xl font-bold mb-2">{article.name}</h1>
           <div className="mb-6">
             <span className="bg-blue-600 text-white px-4 py-1.5 rounded-full font-medium">
               {article.price ? `${article.price} XAF` : '...'}
@@ -85,7 +85,7 @@ export default async function ShopItem(props: PageProps) {
 
           <div className="mb-8">
             <p className="text-gray-700">
-              {article.content || 'Fabric blend of Supima Cotton and Micromodal.'}
+              {article.description || 'Fabric blend of Supima Cotton and Micromodal.'}
             </p>
           </div>
 

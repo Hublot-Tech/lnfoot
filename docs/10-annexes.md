@@ -5,5 +5,5 @@
   - [Resend](https://resend.com/)
   - [Tailwind CSS](https://tailwindcss.com/)
 - **Contact technique** : CONTACT@LNFOOT.COM
-- **Auteurs** : Belrick Stephane, DTO Vision Pub
+- **Auteurs** : Belrick Stephane, CTO Hublots.
 - **Date de rédaction** : Mai 2025

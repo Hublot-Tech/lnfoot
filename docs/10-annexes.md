@@ -5,5 +5,5 @@
   - [Resend](https://resend.com/)
   - [Tailwind CSS](https://tailwindcss.com/)
 - **Contact technique** : CONTACT@LNFOOT.COM
-- **Auteurs** : Luvnation Agency
+- **Auteurs** : Belrick Stephane, DTO Vision Pub
 - **Date de rédaction** : Mai 2025

@@ -133,21 +133,21 @@ async function FeaturedProducts() {
             <div className="relative aspect-square overflow-hidden">
               <img
                 src={product.imageUrl || "/placeholder.svg"}
-                alt={product.title}
+                alt={product.name}
                 className="transform group-hover:scale-105 transition-transform duration-300"
               />
               {product.price && (
                 <Badge className="absolute top-4 right-4 bg-black text-white">
-                  {product.price}€
+                  {product.price}XAF
                 </Badge>
               )}
             </div>
             <div className="p-4">
               <h3 className="font-semibold mb-2 group-hover:text-orange-500 transition-colors">
-                {product.title}
+                {product.name}
               </h3>
               <p className="text-sm text-gray-600 line-clamp-2">
-                {product.summary || product.content}
+                {product.description || "Aucune description disponible"}
               </p>
             </div>
           </Link>

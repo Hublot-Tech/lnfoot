@@ -68,7 +68,7 @@ export const apiClient = {
     async findAll() {
       return (
         (await safeFetch<EcommerceArticle[]>(
-          `${baseUrl}/api/trpc/ecommerceArticles.latest`,
+          `https://api.ln-foot.com/api/products`,
         )) ?? []
       );
     },

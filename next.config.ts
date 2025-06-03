@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'lnfoot-img.hublots.co',
+        hostname: 's3.ln-foot.com',
       },
       {
         protocol: 'https',

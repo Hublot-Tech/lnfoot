@@ -14,6 +14,9 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "LN Foot",
   description: "Luvnation Foot",
+  icons: {
+    icon: '/ln.ico'
+  }
 };
 
 export default function RootLayout({

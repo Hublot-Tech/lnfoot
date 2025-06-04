@@ -93,7 +93,7 @@ export default async function ShopItem(props: PageProps) {
             className="w-full flex items-center justify-center gap-2 bg-blue-700 text-white py-6 rounded-lg"
           >
             <Download className="w-5 h-5" />
-            <a href="https://lnfoot-img.hublots.co/app-release/app-release.apk" download>
+            <a href="https://s3.ln-foot.com/app-releases/app-release.apk" download>
               Acheter sur l&lsquo;application
             </a>
           </Button>

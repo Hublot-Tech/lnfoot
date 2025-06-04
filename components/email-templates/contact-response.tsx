@@ -94,7 +94,7 @@ export const ContactResponseEmail = ({
 
                 <Section className="text-center mb-[32px]">
                   <Button
-                    href="https://lnfoot.com"
+                    href="https://ln-foot.com"
                     className="bg-[#F3653D] rounded-[4px] text-white font-bold px-[24px] py-[12px] no-underline text-center box-border"
                   >
                     Visiter notre site web
@@ -119,7 +119,7 @@ export const ContactResponseEmail = ({
                   © {currentYear} {companyName}. Tous droits réservés.
                 </Text>
                 <Text className="text-[12px] text-gray-400 m-0">
-                  <Link href="https://lnfoot.com/privacy" className="text-gray-400">
+                  <Link href="https://ln-foot.com/privacy" className="text-gray-400">
                     Politique de confidentialité
                   </Link>
                 </Text>

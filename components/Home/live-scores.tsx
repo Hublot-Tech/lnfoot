@@ -87,7 +87,7 @@ export default async function LiveScores() {
 
       <span className="flex justify-between ">
         <h2 className="text-3xl uppercase text-orange-500 font-bold">SCORES EN DIRECT</h2>
-        <Link href="/lives-scores" className="text-orange-500 hover:text-orange-600">
+        <Link href="/live-scores" className="text-orange-500 hover:text-orange-600">
           voir plus &rarr;
         </Link>
       </span>

@@ -57,7 +57,7 @@ const Email = () => {
             <Section className="mb-[32px] text-center">
               <Button
                 className="bg-[#FF8C00] text-white font-bold py-[12px] px-[24px] rounded-[4px] no-underline text-center box-border"
-                href="https://lnfoot.com"
+                href="https://ln-foot.com"
               >
                 Visiter notre site
               </Button>
@@ -85,7 +85,7 @@ const Email = () => {
                 </a>
               </Text>
               <Text className="text-[12px] leading-[16px] text-[#666] mt-[16px] mb-0">
-                <a href="https://lnfoot.com/unsubscribe" className="text-[#666] underline">
+                <a href="https://ln-foot.com/unsubscribe" className="text-[#666] underline">
                   Se désabonner
                 </a>
               </Text>

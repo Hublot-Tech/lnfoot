@@ -86,22 +86,22 @@ export default function ContactPage() {
                 <FaEnvelope className="text-white bg-orange-600 rounded-full p-2 mr-4 w-8 h-8" />
                 <div>
                   <p className="font-bold">E-MAIL</p>
-                  <p>CONTACT@LNFOOT.COM</p>
+                  <p>contact@ln-foot.com</p>
                 </div>
               </div>
             </div>                <div className="mt-6">
               <p className="font-bold">SUIVEZ-NOUS</p>
               <div className="flex space-x-4 mt-2">
-                <a href="#" className="text-white bg-orange-600 p-2 rounded-full" aria-label="Facebook">
+                <a href="https://www.facebook.com/LnFoot237" className="text-white bg-orange-600 p-2 rounded-full" aria-label="Facebook">
                   <FaFacebookF className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-white bg-orange-600 p-2 rounded-full" aria-label="Twitter">
+                <a href="https://x.com/LnFoot" className="text-white bg-orange-600 p-2 rounded-full" aria-label="Twitter">
                   <FaTwitter className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-white bg-orange-600 p-2 rounded-full" aria-label="YouTube">
+                <a href="https://www.youtube.com/@LNFOOT" className="text-white bg-orange-600 p-2 rounded-full" aria-label="YouTube">
                   <FaYoutube className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-white bg-orange-600 p-2 rounded-full" aria-label="Instagram">
+                <a href="https://www.youtube.com/@LNFOOT" className="text-white bg-orange-600 p-2 rounded-full" aria-label="Instagram">
                   <FaInstagram className="w-6 h-6" />
                 </a>
               </div>

@@ -17,7 +17,7 @@ export default function GetApp() {
 							et profitez de nos offres exclusives sur l&apos;application !
 						</p>
 						<div className="mt-11 flex flex-col justify-center gap-2 sm:flex-row">
-							<a href="https://lnfoot-img.hublots.co/app-release/app-release.apk">
+							<a href="https://s3.ln-foot.com/app-releases/app-release.apk">
 								<Button size="lg" className='bg-blue-900'>Télécharger l&apos;application</Button>
 							</a>
 							<Link href="/shop">

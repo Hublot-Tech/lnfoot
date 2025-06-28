@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React, { Suspense } from 'react'
 import { apiClient } from '@/app/api/api-client'
 import type { AdvertisementDto } from '@/app/api/generated'
@@ -5,16 +7,20 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 async function Ads() {
-  const advertisementsResponse = await apiClient.advertisements.findAll()
-  const advertisements = advertisementsResponse.content ?? []
+  const advertisements = await apiClient.advertisements.findAll()
 
   if (!advertisements.length) {
     return null
   }
+
   return (
-    <section className="w-full my-8 px-4 lg:px-24 max-w-full">
-      <Suspense fallback={<div className="h-48 md:h-64 w-full bg-gray-200 animate-pulse rounded-lg" />}>
-        <div className="grid grid-cols-1 gap-8  w-full">
+    <section className='w-full my-8 px-4 lg:px-24 max-w-full'>
+      <Suspense
+        fallback={
+          <div className='h-48 md:h-64 w-full bg-gray-200 animate-pulse rounded-lg' />
+        }
+      >
+        <div className='grid grid-cols-1 gap-8  w-full'>
           {advertisements.map((ad) => (
             <AdCard key={ad.id} advertisement={ad} />
           ))}
@@ -26,10 +32,12 @@ async function Ads() {
 
 function AdCard({ advertisement }: { advertisement: AdvertisementDto }) {
   return (
-    <Link href={advertisement.url || '#'} className="w-full">
-      <span className='w-full flex self-center text-foreground italic text-xs text-shadow-accent'>Publicité Partenaire</span>
+    <Link href={advertisement.url || '#'} className='w-full'>
+      <span className='w-full flex self-center text-foreground italic text-xs text-shadow-accent'>
+        Publicité Partenaire
+      </span>
       <div
-        className="relative h-48 md:h-64 w-full overflow-hidden rounded-lg transition-transform hover:scale-[1.02] group shadow-md"
+        className='relative h-48 md:h-64 w-full overflow-hidden rounded-lg transition-transform hover:scale-[1.02] group shadow-md'
         style={{
           backgroundImage: `url(${advertisement.imageUrl || '/placeholder.svg'})`,
           backgroundSize: 'cover',
@@ -37,17 +45,21 @@ function AdCard({ advertisement }: { advertisement: AdvertisementDto }) {
         }}
       >
         {/* Overlay to improve text visibility */}
-        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all"></div>
+        <div className='absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all'></div>
 
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-          <h3 className="text-xl md:text-2xl font-bold mb-2">{advertisement.title}</h3>
+        <div className='absolute inset-0 flex flex-col justify-end p-6 text-white'>
+          <h3 className='text-xl md:text-2xl font-bold mb-2'>
+            {advertisement.title}
+          </h3>
           {advertisement.content && (
-            <p className="text-sm md:text-base mb-4 max-w-2xl line-clamp-2">{advertisement.content}</p>
+            <p className='text-sm md:text-base mb-4 max-w-2xl line-clamp-2'>
+              {advertisement.content}
+            </p>
           )}
           <Button
-            variant="outline"
-            className="self-start bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-black transition-all"
+            variant='outline'
+            className='self-start bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-black transition-all'
           >
             En savoir plus
           </Button>

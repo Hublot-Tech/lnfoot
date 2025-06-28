@@ -1,124 +1,232 @@
-import { getBaseUrl } from "@/lib/utilities";
-import type {
-  ApiResponse,
-  EcommerceArticle,
-  Highlight,
-  League,
-  Fixtures,
-  NewsArticle,
-  Advertisement,
-} from "./types";
+import {
+  findFixtureById,
+  findHighlightById,
+  findLeagueById,
+  findNewsArticleById,
+  getAdvertisementById,
+  getAllProducts,
+  getLatestAdvertisements,
+  getProductById,
+  listFixtures,
+  listHighlights,
+  listLeagues,
+  listNewsArticles,
+  Pageable,
+} from './generated'
+import { client } from './generated/client.gen'
 
-const baseUrl = getBaseUrl();
+client.setConfig({
+  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000',
+})
 
-async function safeFetch<T>(url: string): Promise<T | null> {
-  try {
-    const res = await fetch(url, {
-      method: "GET",
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      console.error(`[safeFetch] Failed with status ${res.status} for ${url}`);
-      return null;
-    }
-
-    const {
-      result: { data },
-    } = (await res.json()) as ApiResponse<T>;
-    return data.json ?? null;
-  } catch (err) {
-    console.error(`[safeFetch] Error fetching ${url}:`, err);
-    return null;
-  }
-}
+const DEFAULT_PAGEABLE: Pageable = { page: 0, size: 10 }
 
 export const apiClient = {
   newsArticles: {
-    async findAll() {
-      return (
-        (await safeFetch<NewsArticle[]>(
-          `${baseUrl}/api/trpc/newsArticles.latest`,
-        )) ?? []
-      );
+    async findAll(status?: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED') {
+      try {
+        const { data, error } = await listNewsArticles({
+          query: { status },
+        })
+        if (error) {
+          console.error(`Error fetching news articles:`, error)
+          return []
+        }
+
+        return data ?? []
+      } catch (error) {
+        console.error('Error fetching news articles:', error)
+        return []
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        const { data, error } = await findNewsArticleById({ path: { id } })
+        if (error) {
+          console.error(`Error fetching news article with id ${id}:`, error)
+          return null
+        }
+        return data ?? null
+      } catch (error) {
+        console.error(`Error fetching news article with id ${id}:`, error)
+        return null
+      }
     },
   },
 
   fixtures: {
-    async findAll(competion?: string) {
-      return (
-        (await safeFetch<Fixtures[]>(
-          `${baseUrl}/api/trpc/fixtures.latest?competion=${competion ?? ""}`,
-        )) ?? []
-      );
+    async findAll(leagueApiId?: string, pageable: Pageable = DEFAULT_PAGEABLE) {
+      try {
+        const { data, error } = await listFixtures({
+          query: {
+            leagueApiId,
+            pageable,
+          },
+        })
+        if (error) {
+          console.error(`Error fetching all fixtures:`, error)
+          return []
+        }
+        return data ?? []
+      } catch (error) {
+        console.error('Error fetching fixtures:', error)
+        return []
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        const { data, error } = await findFixtureById({ path: { id } })
+        if (error) {
+          console.error(`Error fetching highlight with id ${id}:`, error)
+          return null
+        }
+        return data ?? null
+      } catch (error) {
+        console.error(`Error fetching fixture with id ${id}:`, error)
+        return null
+      }
     },
   },
 
   ecommerceArticles: {
     async findAll() {
-      return (
-        (await safeFetch<EcommerceArticle[]>(
-          `https://api.ln-foot.com/api/products`,
-        )) ?? []
-      );
+      try {
+        const { data, error } = await getAllProducts()
+        if (error) {
+          console.error(`Error fetching all products:`, error)
+          return []
+        }
+        return data ?? []
+      } catch (error) {
+        console.error('Error fetching ecommerce articles:', error)
+        return []
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        const { data, error } = await getProductById({ path: { id } })
+        if (error) {
+          console.error(`Error fetching highlight with id ${id}:`, error)
+          return null
+        }
+        return data ?? null
+      } catch (error) {
+        console.error(`Error fetching ecommerce article with id ${id}:`, error)
+        return null
+      }
     },
   },
 
   highlights: {
-    async findAll() {
-      return (
-        (await safeFetch<Highlight[]>(
-          `${baseUrl}/api/trpc/highlights.latest`,
-        )) ?? []
-      );
+    async findAll(pageable: Pageable = DEFAULT_PAGEABLE) {
+      try {
+        const { data, error } = await listHighlights({ query: { pageable } })
+        if (error) {
+          console.error(`Error fetching highlights:`, error)
+          return []
+        }
+
+
+        return data?.content ?? []
+      } catch (error) {
+        console.error('Error fetching highlights:', error)
+        return []
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        const { data, error } = await findHighlightById({ path: { id } })
+        if (error) {
+          console.error(`Error fetching highlight with id ${id}:`, error)
+          return null
+        }
+        return data ?? null
+      } catch (error) {
+        console.error(`Error fetching highlight with id ${id}:`, error)
+        return null
+      }
     },
   },
 
   advertisements: {
-    async findAll() {
-      return (
-        (await safeFetch<Advertisement[]>(
-          `${baseUrl}/api/trpc/advertisements.latest`,
-        )) ?? []
-      );
+    async findAll(pageable: Pageable = DEFAULT_PAGEABLE) {
+      try {
+        // Assuming getLatestAdvertisements is the correct method
+        const { data, error, request, response } = await getLatestAdvertisements({
+          query: { pageable },
+        })
+        console.log({ request, response })
+
+        if (error) {
+          console.error(`Error fetching advertisements:`, error)
+          return []
+        }
+        return data?.content ?? []
+      } catch (error) {
+        console.error('Error fetching advertisements:', error)
+        return []
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        const { data, error } = await getAdvertisementById({
+          path: { id },
+        })
+        if (error) {
+          console.error(`Error fetching highlight with id ${id}:`, error)
+          return null
+        }
+        return data ?? null
+      } catch (error) {
+        console.error(`Error fetching advertisement with id ${id}:`, error)
+        return null
+      }
     },
   },
 
   leagues: {
-    async findAll() {
-      return (
-        (await safeFetch<League[]>(`${baseUrl}/api/trpc/leagues.list`)) ?? []
-      );
+    async findAll(
+      country?: string,
+      type?: string,
+      pageable: Pageable = { page: 0, size: 10 }
+    ) {
+      try {
+        const { data, error } = await listLeagues({
+          query: {
+            country,
+            type,
+            pageable,
+          },
+        })
+
+        if (error) {
+          console.error(`Error fetching leagues:`, error)
+          return []
+        }
+        return data ?? []
+      } catch (error) {
+        console.error('Error fetching leagues:', error)
+        return []
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        const { data, error } = await findLeagueById({ path: { id } })
+        if (error) {
+          console.error(`Error fetching league with id ${id}:`, error)
+          return null
+        }
+        return data ?? null
+      } catch (error) {
+        console.error(`Error fetching league with id ${id}:`, error)
+        return null
+      }
     },
   },
-};
+}

@@ -5,20 +5,20 @@ import Image from "next/legacy/image"
 import { Dialog, DialogContent, DialogTitle } from "@/components/motion-primitives/dialog"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Play } from "lucide-react"
-import type { Highlight } from "@/app/api/types"
+import type { HighlightDto } from "@/app/api/generated"
 import { getYouTubeEmbedUrl, isYouTubeUrl } from "@/lib/utilities";
 import Link from "next/link"
 
 
 interface HighlightsClientProps {
-  highlights: Highlight[]
+  highlights: HighlightDto[]
 }
 
 export function HighlightsClient({ highlights }: HighlightsClientProps) {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   // Fonction pour ouvrir la modale avec la vidéo sélectionnée
-  const openVideoModal = (videoUrl: string | null) => {
+  const openVideoModal = (videoUrl: string | null | undefined) => {
     if (videoUrl && isYouTubeUrl(videoUrl)) {
       setSelectedVideo(getYouTubeEmbedUrl(videoUrl))
       setIsModalOpen(true)
@@ -34,7 +34,7 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
     <div className="mx-auto py-20 px-4 lg:px-24">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl uppercase text-orange-500 font-bold">POINTS FORTS</h2>
-        <Link href="/news" className="text-orange-500 hover:text-orange-600">
+        <Link href="/gallery" className="text-orange-500 hover:text-orange-600">
           voir plus &rarr;
         </Link>
       </div>
@@ -76,8 +76,8 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
                   onClick={() => openVideoModal(video.videoUrl)}
                 >
                   <Image
-                    src={video.thumbnailUrl ?? "/placeholder.svg"}
-                    alt={video.title ?? ""}
+                    src={video.thumbnailUrl || "/placeholder.svg"}
+                    alt={video.title || ""}
                     layout="fill"
                     objectFit="cover"
                     className="transition-transform group-hover:scale-105"

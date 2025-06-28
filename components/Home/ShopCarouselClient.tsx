@@ -1,13 +1,13 @@
 'use client';
 
 import { useRef } from 'react';
-import { EcommerceArticle } from "@/app/api/types";
+import type { ProductDto } from "@/app/api/generated";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Autoplay from 'embla-carousel-autoplay';
 
-export function CarouselWithAutoplay({ articles }: { articles: EcommerceArticle[] }) {
+export function CarouselWithAutoplay({ articles }: { articles: ProductDto[] }) {
   const autoplayPlugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );

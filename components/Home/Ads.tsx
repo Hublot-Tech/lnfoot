@@ -1,11 +1,12 @@
 import React, { Suspense } from 'react'
 import { apiClient } from '@/app/api/api-client'
-import { Advertisement } from '@/app/api/types'
+import type { AdvertisementDto } from '@/app/api/generated'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 async function Ads() {
-  const advertisements = await apiClient.advertisements.findAll()
+  const advertisementsResponse = await apiClient.advertisements.findAll()
+  const advertisements = advertisementsResponse.content ?? []
 
   if (!advertisements.length) {
     return null
@@ -23,9 +24,9 @@ async function Ads() {
   )
 }
 
-function AdCard({ advertisement }: { advertisement: Advertisement }) {
+function AdCard({ advertisement }: { advertisement: AdvertisementDto }) {
   return (
-    <Link href={advertisement.referenceUrl || '#'} className="w-full">
+    <Link href={advertisement.url || '#'} className="w-full">
       <span className='w-full flex self-center text-foreground italic text-xs text-shadow-accent'>Publicité Partenaire</span>
       <div
         className="relative h-48 md:h-64 w-full overflow-hidden rounded-lg transition-transform hover:scale-[1.02] group shadow-md"
@@ -41,8 +42,8 @@ function AdCard({ advertisement }: { advertisement: Advertisement }) {
         {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
           <h3 className="text-xl md:text-2xl font-bold mb-2">{advertisement.title}</h3>
-          {advertisement.description && (
-            <p className="text-sm md:text-base mb-4 max-w-2xl line-clamp-2">{advertisement.description}</p>
+          {advertisement.content && (
+            <p className="text-sm md:text-base mb-4 max-w-2xl line-clamp-2">{advertisement.content}</p>
           )}
           <Button
             variant="outline"

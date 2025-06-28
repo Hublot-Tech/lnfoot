@@ -6,15 +6,15 @@ import { Button } from "@/components/ui/button";
 import { CarouselItem } from "@/components/ui/carousel";
 import { apiClient } from "@/app/api/api-client";
 import { useEffect, useState } from "react";
-import type { NewsArticle } from "@/app/api/types";
+import type { NewsArticleDto } from "@/app/api/generated";
 
 export function CarouselArticle() {
-	const [article, setArticle] = useState<NewsArticle | null>(null);
+	const [article, setArticle] = useState<NewsArticleDto | null>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const articles = await apiClient.newsArticles.findAll();
+				const articles = await apiClient.newsArticles.findAll("PUBLISHED");
 				if (articles && articles.length > 0) {
 					setArticle(articles[0]);
 				}
@@ -53,7 +53,7 @@ export function CarouselArticle() {
 					<div className="mb-8 flex justify-center gap-4">
 						<span className="text-[#FF4B11]">News</span>
 						<span className="text-gray-400">
-							{new Date(article.publishedAt || article.createdAt).toLocaleDateString()}
+							{new Date(article.publishedAt || article.createdAt!).toLocaleDateString()}
 						</span>
 					</div>
 					<div className="relative mx-auto h-[400px] w-full max-w-5xl overflow-hidden rounded-xl">

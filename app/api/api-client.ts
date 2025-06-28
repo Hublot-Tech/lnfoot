@@ -1,124 +1,152 @@
-import { getBaseUrl } from "@/lib/utilities";
-import type {
-  ApiResponse,
-  EcommerceArticle,
-  Highlight,
-  League,
-  Fixtures,
-  NewsArticle,
-  Advertisement,
-} from "./types";
+import { OpenAPI } from "./generated";
+import {
+  NewsArticleControllerService,
+  FixtureControllerService,
+  ProductControllerService,
+  HighlightControllerService,
+  AdvertisementControllerService,
+  LeagueControllerService,
+  type NewsArticleDto,
+  type FixtureDto,
+  type ProductDto,
+  type HighlightDto,
+  type AdvertisementDto,
+  type LeagueDto,
+} from "./generated";
 
-const baseUrl = getBaseUrl();
-
-async function safeFetch<T>(url: string): Promise<T | null> {
-  try {
-    const res = await fetch(url, {
-      method: "GET",
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      console.error(`[safeFetch] Failed with status ${res.status} for ${url}`);
-      return null;
-    }
-
-    const {
-      result: { data },
-    } = (await res.json()) as ApiResponse<T>;
-    return data.json ?? null;
-  } catch (err) {
-    console.error(`[safeFetch] Error fetching ${url}:`, err);
-    return null;
-  }
-}
+OpenAPI.BASE = "https://api.ln-foot.com";
 
 export const apiClient = {
   newsArticles: {
-    async findAll() {
-      return (
-        (await safeFetch<NewsArticle[]>(
-          `${baseUrl}/api/trpc/newsArticles.latest`,
-        )) ?? []
-      );
+    async findAll(status?: "DRAFT" | "PUBLISHED" | "ARCHIVED") {
+      try {
+        return await NewsArticleControllerService.listNewsArticles({ status });
+      } catch (error) {
+        console.error("Error fetching news articles:", error);
+        return [];
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        return await NewsArticleControllerService.findNewsArticleById({ id });
+      } catch (error) {
+        console.error(`Error fetching news article with id ${id}:`, error);
+        return null;
+      }
     },
   },
 
   fixtures: {
-    async findAll(competion?: string) {
-      return (
-        (await safeFetch<Fixtures[]>(
-          `${baseUrl}/api/trpc/fixtures.latest?competion=${competion ?? ""}`,
-        )) ?? []
-      );
+    async findAll(leagueApiId?: string, pageable?: any) {
+      try {
+        return await FixtureControllerService.listFixtures({
+          leagueApiId,
+          pageable,
+        });
+      } catch (error) {
+        console.error("Error fetching fixtures:", error);
+        return { content: [] }; // Return empty content in case of error
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        return await FixtureControllerService.findFixtureById({ id });
+      } catch (error) {
+        console.error(`Error fetching fixture with id ${id}:`, error);
+        return null;
+      }
     },
   },
 
   ecommerceArticles: {
     async findAll() {
-      return (
-        (await safeFetch<EcommerceArticle[]>(
-          `https://api.ln-foot.com/api/products`,
-        )) ?? []
-      );
+      try {
+        return await ProductControllerService.getAllProducts();
+      } catch (error) {
+        console.error("Error fetching ecommerce articles:", error);
+        return [];
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        return await ProductControllerService.getProductById({ id });
+      } catch (error) {
+        console.error(`Error fetching ecommerce article with id ${id}:`, error);
+        return null;
+      }
     },
   },
 
   highlights: {
-    async findAll() {
-      return (
-        (await safeFetch<Highlight[]>(
-          `${baseUrl}/api/trpc/highlights.latest`,
-        )) ?? []
-      );
+    async findAll(pageable?: any) {
+      try {
+        return await HighlightControllerService.listHighlights({ pageable });
+      } catch (error) {
+        console.error("Error fetching highlights:", error);
+        return { content: [] }; // Return empty content in case of error
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        return await HighlightControllerService.findHighlightById({ id });
+      } catch (error) {
+        console.error(`Error fetching highlight with id ${id}:`, error);
+        return null;
+      }
     },
   },
 
   advertisements: {
-    async findAll() {
-      return (
-        (await safeFetch<Advertisement[]>(
-          `${baseUrl}/api/trpc/advertisements.latest`,
-        )) ?? []
-      );
+    async findAll(pageable?: any) {
+      try {
+        // Assuming getLatestAdvertisements is the correct method
+        return await AdvertisementControllerService.getLatestAdvertisements({
+          pageable,
+        });
+      } catch (error) {
+        console.error("Error fetching advertisements:", error);
+        return { content: [] }; // Return empty content in case of error
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        return await AdvertisementControllerService.getAdvertisementById({
+          id,
+        });
+      } catch (error)
+{
+        console.error(`Error fetching advertisement with id ${id}:`, error);
+        return null;
+      }
     },
   },
 
   leagues: {
-    async findAll() {
-      return (
-        (await safeFetch<League[]>(`${baseUrl}/api/trpc/leagues.list`)) ?? []
-      );
+    async findAll(country?: string, type?: string, pageable?: any) {
+      try {
+        return await LeagueControllerService.listLeagues({
+          country,
+          type,
+          pageable,
+        });
+      } catch (error) {
+        console.error("Error fetching leagues:", error);
+        return { content: [] }; // Return empty content in case of error
+      }
     },
 
     async findOne(id: string) {
-      const all = await this.findAll();
-      return all.find((el) => el.id === id);
+      try {
+        return await LeagueControllerService.findLeagueById({ id });
+      } catch (error) {
+        console.error(`Error fetching league with id ${id}:`, error);
+        return null;
+      }
     },
   },
 };

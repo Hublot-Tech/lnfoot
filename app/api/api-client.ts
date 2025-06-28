@@ -1,38 +1,40 @@
-import { OpenAPI } from "./generated";
 import {
-  NewsArticleControllerService,
-  FixtureControllerService,
-  ProductControllerService,
-  HighlightControllerService,
-  AdvertisementControllerService,
-  LeagueControllerService,
-  type NewsArticleDto,
-  type FixtureDto,
-  type ProductDto,
-  type HighlightDto,
-  type AdvertisementDto,
-  type LeagueDto,
-} from "./generated";
+  findFixtureById,
+  findHighlightById,
+  findLeagueById,
+  findNewsArticleById,
+  getAdvertisementById,
+  getAllProducts,
+  getLatestAdvertisements,
+  getProductById,
+  listFixtures,
+  listHighlights,
+  listLeagues,
+  listNewsArticles,
+} from './generated'
+import { client } from './generated/client.gen'
 
-OpenAPI.BASE = "https://api.ln-foot.com";
+client.setConfig({
+  baseUrl: 'https://api.ln-foot.com',
+})
 
 export const apiClient = {
   newsArticles: {
-    async findAll(status?: "DRAFT" | "PUBLISHED" | "ARCHIVED") {
+    async findAll(status?: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED') {
       try {
-        return await NewsArticleControllerService.listNewsArticles({ status });
+        return await listNewsArticles({ query: { status } })
       } catch (error) {
-        console.error("Error fetching news articles:", error);
-        return [];
+        console.error('Error fetching news articles:', error)
+        return []
       }
     },
 
     async findOne(id: string) {
       try {
-        return await NewsArticleControllerService.findNewsArticleById({ id });
+        return await findNewsArticleById({ path: { id } })
       } catch (error) {
-        console.error(`Error fetching news article with id ${id}:`, error);
-        return null;
+        console.error(`Error fetching news article with id ${id}:`, error)
+        return null
       }
     },
   },
@@ -40,22 +42,24 @@ export const apiClient = {
   fixtures: {
     async findAll(leagueApiId?: string, pageable?: any) {
       try {
-        return await FixtureControllerService.listFixtures({
-          leagueApiId,
-          pageable,
-        });
+        return await listFixtures({
+          query: {
+            leagueApiId,
+            pageable,
+          },
+        })
       } catch (error) {
-        console.error("Error fetching fixtures:", error);
-        return { content: [] }; // Return empty content in case of error
+        console.error('Error fetching fixtures:', error)
+        return { content: [] } // Return empty content in case of error
       }
     },
 
     async findOne(id: string) {
       try {
-        return await FixtureControllerService.findFixtureById({ id });
+        return await findFixtureById({ path: { id } })
       } catch (error) {
-        console.error(`Error fetching fixture with id ${id}:`, error);
-        return null;
+        console.error(`Error fetching fixture with id ${id}:`, error)
+        return null
       }
     },
   },
@@ -63,19 +67,19 @@ export const apiClient = {
   ecommerceArticles: {
     async findAll() {
       try {
-        return await ProductControllerService.getAllProducts();
+        return await getAllProducts()
       } catch (error) {
-        console.error("Error fetching ecommerce articles:", error);
-        return [];
+        console.error('Error fetching ecommerce articles:', error)
+        return []
       }
     },
 
     async findOne(id: string) {
       try {
-        return await ProductControllerService.getProductById({ id });
+        return await getProductById({ path: { id } })
       } catch (error) {
-        console.error(`Error fetching ecommerce article with id ${id}:`, error);
-        return null;
+        console.error(`Error fetching ecommerce article with id ${id}:`, error)
+        return null
       }
     },
   },
@@ -83,19 +87,19 @@ export const apiClient = {
   highlights: {
     async findAll(pageable?: any) {
       try {
-        return await HighlightControllerService.listHighlights({ pageable });
+        return await listHighlights({ query: { pageable } })
       } catch (error) {
-        console.error("Error fetching highlights:", error);
-        return { content: [] }; // Return empty content in case of error
+        console.error('Error fetching highlights:', error)
+        return { content: [] } // Return empty content in case of error
       }
     },
 
     async findOne(id: string) {
       try {
-        return await HighlightControllerService.findHighlightById({ id });
+        return await findHighlightById({ path: { id } })
       } catch (error) {
-        console.error(`Error fetching highlight with id ${id}:`, error);
-        return null;
+        console.error(`Error fetching highlight with id ${id}:`, error)
+        return null
       }
     },
   },
@@ -104,24 +108,23 @@ export const apiClient = {
     async findAll(pageable?: any) {
       try {
         // Assuming getLatestAdvertisements is the correct method
-        return await AdvertisementControllerService.getLatestAdvertisements({
-          pageable,
-        });
+        return await getLatestAdvertisements({
+          query: { pageable },
+        })
       } catch (error) {
-        console.error("Error fetching advertisements:", error);
-        return { content: [] }; // Return empty content in case of error
+        console.error('Error fetching advertisements:', error)
+        return { content: [] } // Return empty content in case of error
       }
     },
 
     async findOne(id: string) {
       try {
-        return await AdvertisementControllerService.getAdvertisementById({
-          id,
-        });
-      } catch (error)
-{
-        console.error(`Error fetching advertisement with id ${id}:`, error);
-        return null;
+        return await getAdvertisementById({
+          path: { id },
+        })
+      } catch (error) {
+        console.error(`Error fetching advertisement with id ${id}:`, error)
+        return null
       }
     },
   },
@@ -129,24 +132,26 @@ export const apiClient = {
   leagues: {
     async findAll(country?: string, type?: string, pageable?: any) {
       try {
-        return await LeagueControllerService.listLeagues({
-          country,
-          type,
-          pageable,
-        });
+        return await listLeagues({
+          query: {
+            country,
+            type,
+            pageable,
+          },
+        })
       } catch (error) {
-        console.error("Error fetching leagues:", error);
-        return { content: [] }; // Return empty content in case of error
+        console.error('Error fetching leagues:', error)
+        return { content: [] } // Return empty content in case of error
       }
     },
 
     async findOne(id: string) {
       try {
-        return await LeagueControllerService.findLeagueById({ id });
+        return await findLeagueById({ path: { id } })
       } catch (error) {
-        console.error(`Error fetching league with id ${id}:`, error);
-        return null;
+        console.error(`Error fetching league with id ${id}:`, error)
+        return null
       }
     },
   },
-};
+}

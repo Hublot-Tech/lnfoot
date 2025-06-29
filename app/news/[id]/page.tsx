@@ -99,8 +99,7 @@ export default async function NewsPage({ params }: UserPageProps) {
 
               <figure className='mb-6'>
                 <Image
-                  width={0}
-                  height={0}
+                  fill
                   className='h-auto w-full rounded-lg object-cover'
                   src={latestNews?.imageUrl ?? '/ln-icon.svg'}
                   alt='Football News'
@@ -137,8 +136,7 @@ export default async function NewsPage({ params }: UserPageProps) {
                     className={`flex gap-4 ${index < recentArticles.length - 1 ? 'border-b border-gray-100 pb-4' : ''}`}
                   >
                     <Image
-                      width={0}
-                      height={0}
+                      fill
                       src={article.imageUrl ?? '/ln-icon.svg'}
                       alt={article.title ?? ''}
                       className='h-20 w-24 rounded object-cover'
@@ -179,8 +177,7 @@ export default async function NewsPage({ params }: UserPageProps) {
               >
                 <Link href={`/news/${article.id}`} className='block'>
                   <Image
-                    width={0}
-                    height={0}
+                    fill
                     src={article.imageUrl ?? '/ln-icon.svg'}
                     alt={article.title ?? ''}
                     className='h-48 w-full object-cover'

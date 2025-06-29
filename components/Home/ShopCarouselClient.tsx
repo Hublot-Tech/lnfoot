@@ -46,8 +46,7 @@ export function CarouselWithAutoplay({ articles }: { articles: ProductDto[] }) {
                 <div className='relative h-52 w-full overflow-hidden'>
                   {article.imageUrl ? (
                     <Image
-                      width={0}
-                      height={0}
+                      fill
                       src={article.imageUrl}
                       alt={article.name ?? ''}
                       className='h-full w-full object-cover transition-all hover:scale-105'

@@ -15,8 +15,8 @@ export const LiveScore: React.FC<{ match: FixtureDto }> = ({ match }) => {
         <div>
           {match.homeTeam?.logoUrl && (
             <Image
-              width={0}
-              height={0}
+              width={50}
+              height={50}
               src={match.homeTeam?.logoUrl}
               alt={match.homeTeam?.name ?? ''}
             />
@@ -32,8 +32,8 @@ export const LiveScore: React.FC<{ match: FixtureDto }> = ({ match }) => {
         <div>
           {match.awayTeam?.logoUrl && (
             <Image
-              width={0}
-              height={0}
+              width={50}
+              height={50}
               src={match.awayTeam?.logoUrl}
               alt={match.awayTeam?.name ?? ''}
             />

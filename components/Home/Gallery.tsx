@@ -57,8 +57,7 @@ const Gallery = () => {
                   <div className='absolute top-[calc(25%+40px)] aspect-square h-[calc(50%+40px)] max-lg:right-[calc(50%+40px)] lg:right-[50%]'>
                     <div className='h-full w-full overflow-clip rounded-xl'>
                       <Image
-                        width={0}
-                        height={0}
+                        fill
                         src={item.image}
                         alt={item.title}
                         className='h-full w-full object-cover object-center'
@@ -67,8 +66,7 @@ const Gallery = () => {
                   </div>
                   <div className='absolute inset-y-[25%] left-[50%] flex aspect-[389/420] h-[50%] items-center justify-center max-lg:hidden'>
                     <Image
-                      width={0}
-                      height={0}
+                      fill
                       src={item.logo}
                       alt={item.company}
                       className='h-8 invert'
@@ -87,8 +85,7 @@ const Gallery = () => {
                   <div className='flex flex-col gap-2 p-4 transition-all delay-200 delay-250 duration-500 lg:group-data-[state="closed"]:translate-y-4 lg:group-data-[state="closed"]:opacity-0'>
                     <div className='lg:hidden'>
                       <Image
-                        width={0}
-                        height={0}
+                        fill
                         src={item.logo}
                         alt={item.company}
                         className='h-5 invert lg:h-6'

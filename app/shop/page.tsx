@@ -33,8 +33,7 @@ export default function ShopPage() {
               >
                 <div className='absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all z-10' />
                 <Image
-                  width={0}
-                  height={0}
+                  fill
                   src={category.imageSrc}
                   alt={category.label}
                   className='transform group-hover:scale-110 transition-transform duration-300'
@@ -132,8 +131,7 @@ async function FeaturedProducts() {
           <Link href={`/shop/${product.id}`}>
             <div className='relative aspect-square overflow-hidden'>
               <Image
-                width={0}
-                height={0}
+                fill
                 src={product.imageUrl || '/placeholder.svg'}
                 alt={product.name ?? ''}
                 className='transform group-hover:scale-105 transition-transform duration-300'

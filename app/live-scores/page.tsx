@@ -102,8 +102,7 @@ export default async function LiveScoresPage(params: {
                   <Image
                     src={logoUrl}
                     alt={name}
-                    width={0}
-                    height={0}
+                    fill
                     className='h-5 w-5 object-contain'
                   />
                 )}
@@ -152,8 +151,7 @@ export default async function LiveScoresPage(params: {
               />
               <div className='collapse-title flex items-center gap-2 font-semibold'>
                 <Image
-                  width={0}
-                  height={0}
+                  fill
                   src={logoUrl}
                   alt={name}
                   className='h-4 w-4'

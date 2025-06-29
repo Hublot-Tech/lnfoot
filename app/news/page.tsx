@@ -67,8 +67,7 @@ async function LatestNewsArticle() {
       </h2>
       <div className='aspect-video relative mb-6 overflow-hidden rounded-lg'>
         <Image
-          width={0}
-          height={0}
+          fill
           className='h-full w-full object-cover'
           src={latestNews?.imageUrl ?? '/ln-icon.svg'}
           alt={latestNews?.title || 'Football News'} // Use article title for alt text

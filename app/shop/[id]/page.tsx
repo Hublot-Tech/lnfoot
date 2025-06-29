@@ -28,8 +28,7 @@ export default async function ShopItem(props: PageProps) {
           <div className='relative'>
             <div className='relative aspect-square w-full bg-gray-100 rounded-lg overflow-hidden'>
               <Image
-                width={0}
-                height={0}
+                fill
                 src={article.imageUrl || '/placeholder.svg'}
                 alt={article.description ?? ''}
                 className='object-cover'
@@ -78,8 +77,7 @@ export default async function ShopItem(props: PageProps) {
             <div className='border-2 border-blue-500 rounded-sm p-0.5'>
               <div className='w-16 h-16 relative bg-gray-100'>
                 <Image
-                  width={0}
-                  height={0}
+                  fill
                   src={article.imageUrl || '/placeholder.svg'}
                   alt={article.name ?? ''}
                   className='object-cover'
@@ -89,8 +87,7 @@ export default async function ShopItem(props: PageProps) {
             <div className='border border-gray-200 rounded-sm p-0.5'>
               <div className='w-16 h-16 relative bg-gray-100'>
                 <Image
-                  width={0}
-                  height={0}
+                  fill
                   src={'/placeholder.svg'}
                   alt='Thumbnail'
                   className='object-cover'

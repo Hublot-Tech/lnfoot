@@ -20,8 +20,8 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <Link href='/' className='flex items-center py-2'>
           <Image
-            width={0}
-            height={0}
+            width={50}
+            height={50}
             src='/LN.png'
             alt='Logo'
             className='h-10 w-auto animate-bounce'

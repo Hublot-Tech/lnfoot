@@ -10,8 +10,7 @@ import Image from 'next/image'
 export const NewsCard: React.FC<{ news: NewsArticleDto }> = ({ news }) => (
   <div className='group flex flex-col overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105'>
     <Image
-      width={0}
-      height={0}
+      fill
       src={news?.imageUrl ?? '/ln-icon.svg'}
       alt='Football News'
       className='h-40 w-full object-cover sm:h-48'
@@ -41,8 +40,7 @@ export default async function NewsList() {
         <div className='lg:col-span-1'>
           <div className='overflow-hidden rounded-lg bg-white shadow-lg'>
             <Image
-              width={0}
-              height={0}
+              fill
               src={latestNews?.imageUrl ?? '/ln-icon.svg'}
               alt='Latest News'
               className='h-60 w-full object-cover'

@@ -128,8 +128,7 @@ const Blog = () => {
               <div className='mb-4 flex overflow-clip rounded-xl md:mb-5'>
                 <div className='h-full w-full transition duration-300 group-hover:scale-105'>
                   <Image
-                    width={0}
-                    height={0}
+                    layout='fill'
                     src={post.image}
                     alt={post.title}
                     className='aspect-[3/2] h-full w-full object-cover object-center'

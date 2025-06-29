@@ -5,8 +5,7 @@ const HeroOne = () => {
   return (
     <section className='border-b border-muted bg-gradient-to-br from-blue-900 to-orange-500 px-4 lg:px-24 h-full flex flex-col justify-center'>
       <Image
-        width={0}
-        height={0}
+        fill
         src='/lions-indomptables.jpg'
         alt='Lions Indomptables'
         className='absolute inset-0 w-full h-full object-cover opacity-6'
@@ -34,8 +33,7 @@ const HeroOne = () => {
               <div className='absolute right-0 bottom-0 w-[85%] overflow-hidden rounded-lg'>
                 <AspectRatio ratio={0.918918919 / 1}>
                   <Image
-                    width={0}
-                    height={0}
+                    fill
                     src='/lions.jpg'
                     alt=''
                     className='block size-full  object-cover object-left-top'

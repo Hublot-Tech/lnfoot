@@ -38,8 +38,8 @@ const PrivacyPolicyPage = () => {
                       aria-label='Share on Instagram'
                     >
                       <Image
-                        width={0}
-                        height={0}
+                        width={50}
+                        height={50}
                         src='https://shadcnblocks.com/images/block/logos/instagram-icon.svg'
                         alt='Instagram'
                         className='size-5'
@@ -53,8 +53,8 @@ const PrivacyPolicyPage = () => {
                       aria-label='Share on LinkedIn'
                     >
                       <Image
-                        width={0}
-                        height={0}
+                        width={50}
+                        height={50}
                         src='https://shadcnblocks.com/images/block/logos/linkedin-icon.svg'
                         alt='LinkedIn'
                         className='size-5'
@@ -68,8 +68,8 @@ const PrivacyPolicyPage = () => {
                       aria-label='Share on Product Hunt'
                     >
                       <Image
-                        width={0}
-                        height={0}
+                        width={50}
+                        height={50}
                         src='https://shadcnblocks.com/images/block/logos/producthunt-icon.svg'
                         alt='Product Hunt'
                         className='size-5'
@@ -83,8 +83,8 @@ const PrivacyPolicyPage = () => {
                       aria-label='Share on Twitter'
                     >
                       <Image
-                        width={0}
-                        height={0}
+                        width={50}
+                        height={50}
                         src='https://shadcnblocks.com/images/block/logos/twitter-icon.svg'
                         alt='Twitter'
                         className='size-5'

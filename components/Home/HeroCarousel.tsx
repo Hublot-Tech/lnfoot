@@ -1,14 +1,14 @@
 'use client';
-import HeroSection from "./CarouselSlides/HeroSection";
-import { NewsArticle } from "@/app/api/types";
-import Autoplay from "embla-carousel-autoplay";
+import { NewsArticleDto } from "@/app/api/generated";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"; // Import CarouselContent and CarouselItem
-import { HeroOne } from "./CarouselSlides/HeroOne";
+import Autoplay from "embla-carousel-autoplay";
 import Hero from "../Shop/Hero";
+import { HeroOne } from "./CarouselSlides/HeroOne";
+import HeroSection from "./CarouselSlides/HeroSection";
 
 
 type HeroCarouselProps = {
-	latestNews?: NewsArticle;
+	latestNews?: NewsArticleDto;
 };
 
 // Carousel component with autoplay functionality

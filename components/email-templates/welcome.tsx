@@ -12,7 +12,7 @@ import {
   Tailwind,
 } from '@react-email/components';
 
-const Email = () => {
+const WelcomeEmail = () => {
   return (
     <Html lang="fr">
       <Tailwind>
@@ -97,4 +97,4 @@ const Email = () => {
   );
 };
 
-export default Email;
+export default WelcomeEmail;

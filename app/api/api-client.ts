@@ -68,7 +68,7 @@ export const apiClient = {
           console.error(`Error fetching all fixtures:`, error)
           return []
         }
-        return data ?? []
+        return data?.content ?? []
       } catch (error) {
         console.error('Error fetching fixtures:', error)
         return []
@@ -129,7 +129,6 @@ export const apiClient = {
           return []
         }
 
-
         return data?.content ?? []
       } catch (error) {
         console.error('Error fetching highlights:', error)
@@ -156,10 +155,9 @@ export const apiClient = {
     async findAll(pageable: Pageable = DEFAULT_PAGEABLE) {
       try {
         // Assuming getLatestAdvertisements is the correct method
-        const { data, error, request, response } = await getLatestAdvertisements({
+        const { data, error } = await getLatestAdvertisements({
           query: { pageable },
         })
-        console.log({ request, response })
 
         if (error) {
           console.error(`Error fetching advertisements:`, error)
@@ -208,7 +206,7 @@ export const apiClient = {
           console.error(`Error fetching leagues:`, error)
           return []
         }
-        return data ?? []
+        return data?.content ?? []
       } catch (error) {
         console.error('Error fetching leagues:', error)
         return []

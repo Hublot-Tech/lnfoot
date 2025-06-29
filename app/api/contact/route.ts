@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import ContactResponseEmail from "@/components/email-templates/contact-response";
-import AdminNotificationEmail from "@/components/email-templates/admin-notification";
+import ContactResponseEmail from "@/components/email-templates/ContactResponse";
+import AdminNotificationEmail from "@/components/email-templates/AdminNotification";
 
 // Initialiser Resend avec votre clé API
-const resend = new Resend(process.env.RESEND_API_KEY! as string);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 // Adresse email de l'administrateur
 const ADMIN_EMAIL = "hublotslnfoot@gmail.com";

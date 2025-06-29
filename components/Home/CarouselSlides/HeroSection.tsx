@@ -1,8 +1,8 @@
+import { NewsArticleDto } from "@/app/api/generated";
 import React, { Suspense } from "react";
-import { NewsArticle } from "@/app/api/types";
 
 type HeroSectionProps = {
-	latestNews?: NewsArticle;
+	latestNews?: NewsArticleDto;
 };
 
 const HeroSection: React.FC<HeroSectionProps> = ({ latestNews }) => {

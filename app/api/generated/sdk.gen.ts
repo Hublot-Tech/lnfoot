@@ -26,7 +26,7 @@ export const updateUserRole = <ThrowOnError extends boolean = false>(options: Op
                 type: 'http'
             }
         ],
-        url: '/api/v1/users/{id}/role',
+        url: `/api/v1/users/${options.path.id}/role`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export const deleteNewsArticle = <ThrowOnError extends boolean = false>(options:
                 type: 'http'
             }
         ],
-        url: '/api/v1/news-articles/{id}',
+        url: `/api/v1/news-articles/${options.path.id}`,
         ...options
     });
 };
@@ -56,7 +56,7 @@ export const findNewsArticleById = <ThrowOnError extends boolean = false>(option
                 type: 'http'
             }
         ],
-        url: '/api/v1/news-articles/{id}',
+        url: `/api/v1/news-articles/${options.path.id}`,
         ...options
     });
 };
@@ -69,7 +69,7 @@ export const updateNewsArticle = <ThrowOnError extends boolean = false>(options:
                 type: 'http'
             }
         ],
-        url: '/api/v1/news-articles/{id}',
+        url: `/api/v1/news-articles/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export const deleteLeague = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/v1/leagues/{id}',
+        url: `/api/v1/leagues/${options.path.id}`,
         ...options
     });
 };
@@ -99,7 +99,7 @@ export const findLeagueById = <ThrowOnError extends boolean = false>(options: Op
                 type: 'http'
             }
         ],
-        url: '/api/v1/leagues/{id}',
+        url: `/api/v1/leagues/${options.path.id}`,
         ...options
     });
 };
@@ -112,7 +112,7 @@ export const updateLeague = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/v1/leagues/{id}',
+        url: `/api/v1/leagues/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ export const deleteHighlight = <ThrowOnError extends boolean = false>(options: O
                 type: 'http'
             }
         ],
-        url: '/api/v1/highlights/{id}',
+        url: `/api/v1/highlights/${options.path.id}`,
         ...options
     });
 };
@@ -142,7 +142,7 @@ export const findHighlightById = <ThrowOnError extends boolean = false>(options:
                 type: 'http'
             }
         ],
-        url: '/api/v1/highlights/{id}',
+        url: `/api/v1/highlights/${options.path.id}`,
         ...options
     });
 };
@@ -155,7 +155,7 @@ export const updateHighlight = <ThrowOnError extends boolean = false>(options: O
                 type: 'http'
             }
         ],
-        url: '/api/v1/highlights/{id}',
+        url: `/api/v1/highlights/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -172,7 +172,7 @@ export const deleteFixture = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/v1/fixtures/{id}',
+        url: `/api/v1/fixtures/${options.path.id}`,
         ...options
     });
 };
@@ -185,7 +185,7 @@ export const findFixtureById = <ThrowOnError extends boolean = false>(options: O
                 type: 'http'
             }
         ],
-        url: '/api/v1/fixtures/{id}',
+        url: `/api/v1/fixtures/${options.path.id}`,
         ...options
     });
 };
@@ -198,7 +198,7 @@ export const updateFixture = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/v1/fixtures/{id}',
+        url: `/api/v1/fixtures/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -215,7 +215,7 @@ export const deleteAdvertisement = <ThrowOnError extends boolean = false>(option
                 type: 'http'
             }
         ],
-        url: '/api/v1/advertisements/{id}',
+        url: `/api/v1/advertisements/${options.path.id}`,
         ...options
     });
 };
@@ -228,7 +228,7 @@ export const getAdvertisementById = <ThrowOnError extends boolean = false>(optio
                 type: 'http'
             }
         ],
-        url: '/api/v1/advertisements/{id}',
+        url: `/api/v1/advertisements/${options.path.id}`,
         ...options
     });
 };
@@ -241,7 +241,7 @@ export const updateAdvertisement = <ThrowOnError extends boolean = false>(option
                 type: 'http'
             }
         ],
-        url: '/api/v1/advertisements/{id}',
+        url: `/api/v1/advertisements/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -258,7 +258,7 @@ export const deleteSize = <ThrowOnError extends boolean = false>(options: Option
                 type: 'http'
             }
         ],
-        url: '/api/sizes/{id}',
+        url: `/api/sizes/${options.path.id}`,
         ...options
     });
 };
@@ -271,7 +271,7 @@ export const getSizeById = <ThrowOnError extends boolean = false>(options: Optio
                 type: 'http'
             }
         ],
-        url: '/api/sizes/{id}',
+        url: `/api/sizes/${options.path.id}`,
         ...options
     });
 };
@@ -284,7 +284,7 @@ export const updateSize = <ThrowOnError extends boolean = false>(options: Option
                 type: 'http'
             }
         ],
-        url: '/api/sizes/{id}',
+        url: `/api/sizes/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -301,7 +301,7 @@ export const deleteReview = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/reviews/{id}',
+        url: `/api/reviews/${options.path.id}`,
         ...options
     });
 };
@@ -314,7 +314,7 @@ export const getReviewById = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/reviews/{id}',
+        url: `/api/reviews/${options.path.id}`,
         ...options
     });
 };
@@ -327,7 +327,7 @@ export const updateReview = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/reviews/{id}',
+        url: `/api/reviews/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -344,7 +344,7 @@ export const deletePromotionProduct = <ThrowOnError extends boolean = false>(opt
                 type: 'http'
             }
         ],
-        url: '/api/promotion-products/{id}',
+        url: `/api/promotion-products/${options.path.id}`,
         ...options
     });
 };
@@ -357,7 +357,7 @@ export const getPromotionProductById = <ThrowOnError extends boolean = false>(op
                 type: 'http'
             }
         ],
-        url: '/api/promotion-products/{id}',
+        url: `/api/promotion-products/${options.path.id}`,
         ...options
     });
 };
@@ -370,7 +370,7 @@ export const updatePromotionProduct = <ThrowOnError extends boolean = false>(opt
                 type: 'http'
             }
         ],
-        url: '/api/promotion-products/{id}',
+        url: `/api/promotion-products/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -387,7 +387,7 @@ export const deleteProduct = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/products/{id}',
+        url: `/api/products/${options.path.id}`,
         ...options
     });
 };
@@ -400,7 +400,7 @@ export const getProductById = <ThrowOnError extends boolean = false>(options: Op
                 type: 'http'
             }
         ],
-        url: '/api/products/{id}',
+        url: `/api/products/${options.path.id}`,
         ...options
     });
 };
@@ -413,7 +413,7 @@ export const updateProduct = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/products/{id}',
+        url: `/api/products/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -430,7 +430,7 @@ export const deleteProductVariant = <ThrowOnError extends boolean = false>(optio
                 type: 'http'
             }
         ],
-        url: '/api/product-variants/{id}',
+        url: `/api/product-variants/${options.path.id}`,
         ...options
     });
 };
@@ -443,7 +443,7 @@ export const getProductVariant = <ThrowOnError extends boolean = false>(options:
                 type: 'http'
             }
         ],
-        url: '/api/product-variants/{id}',
+        url: `/api/product-variants/${options.path.id}`,
         ...options
     });
 };
@@ -456,7 +456,7 @@ export const updateProductVariant = <ThrowOnError extends boolean = false>(optio
                 type: 'http'
             }
         ],
-        url: '/api/product-variants/{id}',
+        url: `/api/product-variants/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -473,7 +473,7 @@ export const deleteOrder = <ThrowOnError extends boolean = false>(options: Optio
                 type: 'http'
             }
         ],
-        url: '/api/orders/{id}',
+        url: `/api/orders/${options.path.id}`,
         ...options
     });
 };
@@ -486,7 +486,7 @@ export const getOrderById = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/orders/{id}',
+        url: `/api/orders/${options.path.id}`,
         ...options
     });
 };
@@ -499,7 +499,7 @@ export const updateOrder = <ThrowOnError extends boolean = false>(options: Optio
                 type: 'http'
             }
         ],
-        url: '/api/orders/{id}',
+        url: `/api/orders/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -516,7 +516,7 @@ export const confirmOrder = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/orders/{id}/confirm',
+        url: `/api/orders/${options.path.id}/confirm`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -533,7 +533,7 @@ export const deleteCategory = <ThrowOnError extends boolean = false>(options: Op
                 type: 'http'
             }
         ],
-        url: '/api/categories/{id}',
+        url: `/api/categories/${options.path.id}`,
         ...options
     });
 };
@@ -546,7 +546,7 @@ export const getCategoryById = <ThrowOnError extends boolean = false>(options: O
                 type: 'http'
             }
         ],
-        url: '/api/categories/{id}',
+        url: `/api/categories/${options.path.id}`,
         ...options
     });
 };
@@ -559,7 +559,7 @@ export const updateCategory = <ThrowOnError extends boolean = false>(options: Op
                 type: 'http'
             }
         ],
-        url: '/api/categories/{id}',
+        url: `/api/categories/${options.path.id}`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -593,7 +593,7 @@ export const syncAllFixtures = <ThrowOnError extends boolean = false>(options?: 
                 type: 'http'
             }
         ],
-        url: '/api/v1/sync/all-fixtures',
+        url: `/api/v1/sync/all-fixtures`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -610,7 +610,7 @@ export const listNewsArticles = <ThrowOnError extends boolean = false>(options?:
                 type: 'http'
             }
         ],
-        url: '/api/v1/news-articles',
+        url: `/api/v1/news-articles`,
         ...options
     });
 };
@@ -623,7 +623,7 @@ export const createNewsArticle = <ThrowOnError extends boolean = false>(options:
                 type: 'http'
             }
         ],
-        url: '/api/v1/news-articles',
+        url: `/api/v1/news-articles`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -640,7 +640,7 @@ export const listLeagues = <ThrowOnError extends boolean = false>(options: Optio
                 type: 'http'
             }
         ],
-        url: '/api/v1/leagues',
+        url: `/api/v1/leagues`,
         ...options
     });
 };
@@ -653,7 +653,7 @@ export const createLeague = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/v1/leagues',
+        url: `/api/v1/leagues`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -670,7 +670,7 @@ export const listHighlights = <ThrowOnError extends boolean = false>(options: Op
                 type: 'http'
             }
         ],
-        url: '/api/v1/highlights',
+        url: `/api/v1/highlights`,
         ...options
     });
 };
@@ -683,7 +683,7 @@ export const createHighlight = <ThrowOnError extends boolean = false>(options: O
                 type: 'http'
             }
         ],
-        url: '/api/v1/highlights',
+        url: `/api/v1/highlights`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -700,7 +700,7 @@ export const listFixtures = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/v1/fixtures',
+        url: `/api/v1/fixtures`,
         ...options
     });
 };
@@ -713,7 +713,7 @@ export const createFixture = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/v1/fixtures',
+        url: `/api/v1/fixtures`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -730,7 +730,7 @@ export const createAdvertisement = <ThrowOnError extends boolean = false>(option
                 type: 'http'
             }
         ],
-        url: '/api/v1/advertisements',
+        url: `/api/v1/advertisements`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -747,7 +747,7 @@ export const getAllSizes = <ThrowOnError extends boolean = false>(options?: Opti
                 type: 'http'
             }
         ],
-        url: '/api/sizes',
+        url: `/api/sizes`,
         ...options
     });
 };
@@ -760,7 +760,7 @@ export const createSize = <ThrowOnError extends boolean = false>(options: Option
                 type: 'http'
             }
         ],
-        url: '/api/sizes',
+        url: `/api/sizes`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -777,7 +777,7 @@ export const getAllReviews = <ThrowOnError extends boolean = false>(options?: Op
                 type: 'http'
             }
         ],
-        url: '/api/reviews',
+        url: `/api/reviews`,
         ...options
     });
 };
@@ -790,7 +790,7 @@ export const createReview = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/reviews',
+        url: `/api/reviews`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -807,7 +807,7 @@ export const getAllPromotionProducts = <ThrowOnError extends boolean = false>(op
                 type: 'http'
             }
         ],
-        url: '/api/promotion-products',
+        url: `/api/promotion-products`,
         ...options
     });
 };
@@ -820,7 +820,7 @@ export const createPromotionProduct = <ThrowOnError extends boolean = false>(opt
                 type: 'http'
             }
         ],
-        url: '/api/promotion-products',
+        url: `/api/promotion-products`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -837,7 +837,7 @@ export const createPromotionProducts = <ThrowOnError extends boolean = false>(op
                 type: 'http'
             }
         ],
-        url: '/api/promotion-products/batch',
+        url: `/api/promotion-products/batch`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -854,7 +854,7 @@ export const getAllProducts = <ThrowOnError extends boolean = false>(options?: O
                 type: 'http'
             }
         ],
-        url: '/api/products',
+        url: `/api/products`,
         ...options
     });
 };
@@ -868,7 +868,7 @@ export const createProduct = <ThrowOnError extends boolean = false>(options?: Op
                 type: 'http'
             }
         ],
-        url: '/api/products',
+        url: `/api/products`,
         ...options,
         headers: {
             'Content-Type': null,
@@ -885,7 +885,7 @@ export const getProductVariants = <ThrowOnError extends boolean = false>(options
                 type: 'http'
             }
         ],
-        url: '/api/product-variants',
+        url: `/api/product-variants`,
         ...options
     });
 };
@@ -898,7 +898,7 @@ export const createProductVariant = <ThrowOnError extends boolean = false>(optio
                 type: 'http'
             }
         ],
-        url: '/api/product-variants',
+        url: `/api/product-variants`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -915,7 +915,7 @@ export const createProductVariants = <ThrowOnError extends boolean = false>(opti
                 type: 'http'
             }
         ],
-        url: '/api/product-variants/bulk',
+        url: `/api/product-variants/bulk`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -932,7 +932,7 @@ export const getAllOrders = <ThrowOnError extends boolean = false>(options?: Opt
                 type: 'http'
             }
         ],
-        url: '/api/orders',
+        url: `/api/orders`,
         ...options
     });
 };
@@ -945,7 +945,7 @@ export const createOrder = <ThrowOnError extends boolean = false>(options: Optio
                 type: 'http'
             }
         ],
-        url: '/api/orders',
+        url: `/api/orders`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -962,7 +962,7 @@ export const getHeadings = <ThrowOnError extends boolean = false>(options?: Opti
                 type: 'http'
             }
         ],
-        url: '/api/headings',
+        url: `/api/headings`,
         ...options
     });
 };
@@ -975,7 +975,7 @@ export const createHeading = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/headings',
+        url: `/api/headings`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -992,7 +992,7 @@ export const getAllCategories = <ThrowOnError extends boolean = false>(options?:
                 type: 'http'
             }
         ],
-        url: '/api/categories',
+        url: `/api/categories`,
         ...options
     });
 };
@@ -1005,7 +1005,7 @@ export const createCategory = <ThrowOnError extends boolean = false>(options: Op
                 type: 'http'
             }
         ],
-        url: '/api/categories',
+        url: `/api/categories`,
         ...options,
         headers: {
             'Content-Type': 'application/json',
@@ -1022,7 +1022,7 @@ export const listUsers = <ThrowOnError extends boolean = false>(options?: Option
                 type: 'http'
             }
         ],
-        url: '/api/v1/users',
+        url: `/api/v1/users`,
         ...options
     });
 };
@@ -1035,7 +1035,7 @@ export const deleteUser = <ThrowOnError extends boolean = false>(options: Option
                 type: 'http'
             }
         ],
-        url: '/api/v1/users/{id}',
+        url: `/api/v1/users/${options.path.id}`,
         ...options
     });
 };
@@ -1048,7 +1048,7 @@ export const findUserById = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/v1/users/{id}',
+        url: `/api/v1/users/${options.path.id}`,
         ...options
     });
 };
@@ -1061,7 +1061,7 @@ export const getCurrentUser = <ThrowOnError extends boolean = false>(options?: O
                 type: 'http'
             }
         ],
-        url: '/api/v1/users/me',
+        url: `/api/v1/users/me`,
         ...options
     });
 };
@@ -1074,7 +1074,7 @@ export const listTeams = <ThrowOnError extends boolean = false>(options?: Option
                 type: 'http'
             }
         ],
-        url: '/api/v1/teams',
+        url: `/api/v1/teams`,
         ...options
     });
 };
@@ -1087,7 +1087,7 @@ export const findTeamById = <ThrowOnError extends boolean = false>(options: Opti
                 type: 'http'
             }
         ],
-        url: '/api/v1/teams/{id}',
+        url: `/api/v1/teams/${options.path.id}`,
         ...options
     });
 };
@@ -1100,7 +1100,7 @@ export const getUpcomingFixtures = <ThrowOnError extends boolean = false>(option
                 type: 'http'
             }
         ],
-        url: '/api/v1/fixtures/upcoming',
+        url: `/api/v1/fixtures/upcoming`,
         ...options
     });
 };
@@ -1113,7 +1113,7 @@ export const getFixturesByDate = <ThrowOnError extends boolean = false>(options:
                 type: 'http'
             }
         ],
-        url: '/api/v1/fixtures/by-date',
+        url: `/api/v1/fixtures/by-date`,
         ...options
     });
 };
@@ -1126,7 +1126,7 @@ export const getLatestAdvertisements = <ThrowOnError extends boolean = false>(op
                 type: 'http'
             }
         ],
-        url: '/api/v1/advertisements/latest',
+        url: `/api/v1/advertisements/latest`,
         ...options
     });
 };
@@ -1139,7 +1139,7 @@ export const getUserOrders = <ThrowOnError extends boolean = false>(options?: Op
                 type: 'http'
             }
         ],
-        url: '/api/orders/user/orders',
+        url: `/api/orders/user/orders`,
         ...options
     });
 };
@@ -1152,7 +1152,7 @@ export const deleteHeading = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/headings/{id}',
+        url: `/api/headings/${options.path.id}`,
         ...options
     });
 };
@@ -1165,7 +1165,7 @@ export const getOrderById1 = <ThrowOnError extends boolean = false>(options: Opt
                 type: 'http'
             }
         ],
-        url: '/api/headings/{id}',
+        url: `/api/headings/${options.path.id}`,
         ...options
     });
 };
@@ -1178,7 +1178,7 @@ export const deleteImage = <ThrowOnError extends boolean = false>(options: Optio
                 type: 'http'
             }
         ],
-        url: '/api/v1/upload/image',
+        url: `/api/v1/upload/image`,
         ...options,
         headers: {
             'Content-Type': 'application/json',

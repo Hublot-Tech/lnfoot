@@ -27,7 +27,7 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   // Fonction pour ouvrir la modale avec la vidéo sélectionnée
-  const openVideoModal = (videoUrl: string | null | undefined) => {
+  const openVideoModal = (videoUrl?: string) => {
     if (videoUrl && isYouTubeUrl(videoUrl)) {
       setSelectedVideo(getYouTubeEmbedUrl(videoUrl))
       setIsModalOpen(true)

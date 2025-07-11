@@ -36,7 +36,14 @@ export const isYouTubeUrl = (url?: string | null) => {
 }
 
 export function getYouTubeEmbedUrl(url: string): string {
-  const regex = /v=([^&]+)/
-  const match = regex.exec(url)
-  return match ? `https://www.youtube.com/embed/${match[1]}` : ''
+  try {
+    const parsedUrl = new URL(url)
+    if (parsedUrl.hostname.includes('youtu.be')) {
+      return `https://www.youtube.com/embed/${parsedUrl.pathname.slice(1)}`
+    }
+    const videoId = parsedUrl.searchParams.get('v')
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : ''
+  } catch {
+    return ''
+  }
 }

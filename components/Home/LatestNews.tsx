@@ -29,7 +29,6 @@ async function LatestNewsContent() {
 
   const mainArticle = articles?.[0];
   const otherArticles = articles?.slice(1, 4);
-  console.log('Latest news articles:', articles);
   return (
     <>
       {/* Main Article */}

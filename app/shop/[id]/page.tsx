@@ -14,7 +14,6 @@ interface PageProps {
 export default async function ShopItem(props: PageProps) {
   const params = await props.params
   const article = await apiClient.ecommerceArticles.findOne(params.id)
-  console.log('Article:', article)
 
   if (!article) {
     notFound()

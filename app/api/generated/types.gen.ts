@@ -152,6 +152,7 @@ export type UpdateAdvertisementDto = {
     content?: string;
     url?: string;
     imageUrl?: string;
+    videoUrl?: string;
     startDate?: string;
     endDate?: string;
     priority?: number;
@@ -181,7 +182,6 @@ export type PromotionProductDto = {
 export type ProductDto = {
     id?: string;
     imageUrl?: string;
-    file?: Blob | File;
     name?: string;
     description?: string;
     price: number;
@@ -325,8 +325,9 @@ export type CreateFixtureDto = {
 export type CreateAdvertisementDto = {
     title?: string;
     content?: string;
-    url?: string;
+    referenceUrl?: string;
     imageUrl?: string;
+    videoUrl?: string;
     startDate?: string;
     endDate?: string;
     priority?: number;
@@ -337,8 +338,9 @@ export type AdvertisementDto = {
     id?: string;
     title?: string;
     content?: string;
-    url?: string;
+    referenceUrl?: string;
     imageUrl?: string;
+    videoUrl?: string;
     startDate?: string;
     endDate?: string;
     priority?: number;
@@ -355,7 +357,6 @@ export type HeadingDto = {
     id?: string;
     title?: string;
     imageUrl?: string;
-    file?: Blob | File;
 };
 
 export type TeamDto = {
@@ -380,16 +381,16 @@ export type Pageable = {
 };
 
 export type PageLeagueDto = {
-    totalPages?: number;
     totalElements?: number;
+    totalPages?: number;
     pageable?: PageableObject;
     size?: number;
     content?: Array<LeagueDto>;
     number?: number;
     sort?: SortObject;
-    numberOfElements?: number;
     first?: boolean;
     last?: boolean;
+    numberOfElements?: number;
     empty?: boolean;
 };
 
@@ -409,44 +410,44 @@ export type SortObject = {
 };
 
 export type PageHighlightDto = {
-    totalPages?: number;
     totalElements?: number;
+    totalPages?: number;
     pageable?: PageableObject;
     size?: number;
     content?: Array<HighlightDto>;
     number?: number;
     sort?: SortObject;
-    numberOfElements?: number;
     first?: boolean;
     last?: boolean;
+    numberOfElements?: number;
     empty?: boolean;
 };
 
 export type PageFixtureDto = {
-    totalPages?: number;
     totalElements?: number;
+    totalPages?: number;
     pageable?: PageableObject;
     size?: number;
     content?: Array<FixtureDto>;
     number?: number;
     sort?: SortObject;
-    numberOfElements?: number;
     first?: boolean;
     last?: boolean;
+    numberOfElements?: number;
     empty?: boolean;
 };
 
 export type PageAdvertisementDto = {
-    totalPages?: number;
     totalElements?: number;
+    totalPages?: number;
     pageable?: PageableObject;
     size?: number;
     content?: Array<AdvertisementDto>;
     number?: number;
     sort?: SortObject;
-    numberOfElements?: number;
     first?: boolean;
     last?: boolean;
+    numberOfElements?: number;
     empty?: boolean;
 };
 
@@ -1840,5 +1841,5 @@ export type DeleteImageResponses = {
 };
 
 export type ClientOptions = {
-    baseUrl: 'https://api.ln-foot.com' | (string & {});
+    baseUrl: 'http://localhost:8080' | (string & {});
 };

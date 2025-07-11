@@ -9,6 +9,7 @@ import { ChevronRight } from 'lucide-react'
 import { Suspense } from 'react'
 import { ArticleGridSkeleton, ArticleSkeleton } from '@/components/ui/skeletons'
 import Image from 'next/image'
+import DOMPurify from 'isomorphic-dompurify'
 
 // Nombre d'articles par page
 const ITEMS_PER_PAGE = 6
@@ -44,7 +45,7 @@ export default async function NewsPage(props: {
 
         {/* News Grid */}
         <Suspense fallback={<ArticleGridSkeleton count={6} />}>
-          <NewsGrid currentPage={currentPage} />
+          <NewsGrid currentPage={currentPage > 1 ? currentPage : 1} />
         </Suspense>
       </div>
     </section>
@@ -80,6 +81,15 @@ async function LatestNewsArticle() {
         {latestNews?.summary && (
           <p className='text-lg text-gray-700'>{latestNews.summary}</p>
         )}
+      </div>
+      <div className='space-y-4'>
+        <div className='prose max-w-none'>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(latestNews.content ?? ''),
+            }}
+          ></div>
+        </div>
       </div>
     </article>
   )

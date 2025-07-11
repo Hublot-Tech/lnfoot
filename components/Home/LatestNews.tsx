@@ -29,6 +29,7 @@ async function LatestNewsContent() {
 
   const mainArticle = articles?.[0];
   const otherArticles = articles?.slice(1, 4);
+  console.log('Latest news articles:', articles);
   return (
     <>
       {/* Main Article */}
@@ -39,7 +40,7 @@ async function LatestNewsContent() {
       )}
       
       {/* Carousel d'articles */}
-      {otherArticles && otherArticles.length > 0 && (
+      {!!otherArticles?.length && (
         <div className="mt-8">
           <Carousel className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">

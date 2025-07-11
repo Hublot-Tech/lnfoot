@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   images: {
@@ -9,10 +9,15 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'www.youtube.com'
+        hostname: 'www.youtube.com',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '9000',
       }
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

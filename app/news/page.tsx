@@ -23,17 +23,17 @@ export default async function NewsPage(props: {
     <section className='min-h-screen bg-gray-50'>
       <div className='mx-auto max-w-7xl px-4 py-8'>
         {/* Breadcrumb */}
-        <nav className='mb-6 text-sm'>
+        <nav className='mt-10 mb-6 text-sm'>
           <ul className='flex items-center space-x-1'>
             <li>
               <Link href='/' className='text-blue-600 hover:text-blue-800'>
-                Home
+                Accueil
               </Link>
             </li>
             <li>
               <ChevronRight className='h-4' />
             </li>
-            <li className='text-gray-600'>News</li>
+            <li className='text-gray-600'>Actualités</li>
           </ul>
         </nav>
 
@@ -65,7 +65,7 @@ async function LatestNewsArticle() {
       <h2 className='mb-6 text-3xl font-bold uppercase text-orange-400'>
         {latestNews?.title}
       </h2>
-      <div className='aspect-video relative mb-6 overflow-hidden rounded-lg'>
+      <div className='aspect-video w-full max-h-80 relative mb-6 overflow-hidden rounded-lg'>
         <Image
           fill
           className='h-full w-full object-cover'
@@ -96,6 +96,7 @@ async function NewsGrid({ currentPage }: { currentPage: number }) {
   const totalPages = Math.ceil(news.length / ITEMS_PER_PAGE)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
   const paginatedNews = news.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+
 
   return (
     <>

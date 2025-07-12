@@ -26,7 +26,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ latestNews }) => {
 		>
 			<CarouselContent className="h-full">
 				<CarouselItem className="min-h-screen w-full">
-					{<HeroOne />}
+					<HeroOne />
 				</CarouselItem>
 				<CarouselItem className="h-full">
 					<HeroSection latestNews={latestNews} />

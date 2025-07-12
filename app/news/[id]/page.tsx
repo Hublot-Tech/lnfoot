@@ -14,6 +14,9 @@ interface UserPageProps {
 }
 export default async function NewsPage({ params }: UserPageProps) {
   const latestNews = await apiClient.newsArticles.findOne((await params).id)
+  if (!latestNews) {
+    notFound()
+  }
   // Récupérer les articles récents pour le sidebar et la section "Plus d'articles"
   const allNews = await apiClient.newsArticles.findAll()
 
@@ -30,10 +33,6 @@ export default async function NewsPage({ params }: UserPageProps) {
         !recentArticles.map((a) => a.id).includes(article.id)
     )
     .slice(0, 4)
-
-  if (!latestNews) {
-    notFound()
-  }
 
   // Calculer le temps de lecture
   const readingTime = calculateReadingTime(latestNews.content)
@@ -97,15 +96,13 @@ export default async function NewsPage({ params }: UserPageProps) {
                 </span>
               </div>
 
-              <figure className='mb-6'>
-                <Image
-                  height={0}
-                  width={350}
-                  className='h-auto w-full rounded-lg object-cover'
-                  src={latestNews?.imageUrl ?? '/ln-icon.svg'}
-                  alt='Football News'
-                />
-              </figure>
+              <Image
+                height={0}
+                width={350}
+                className='h-auto w-full rounded-lg object-cover'
+                src={latestNews?.imageUrl ?? '/ln-icon.svg'}
+                alt='Football News'
+              />
 
               {latestNews.summary && (
                 <div className='mb-6'>

@@ -10,7 +10,8 @@ import Image from 'next/image'
 export const NewsCard: React.FC<{ news: NewsArticleDto }> = ({ news }) => (
   <div className='group flex flex-col overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105'>
     <Image
-      fill
+      width={300}
+      height={100}
       src={news?.imageUrl ?? '/ln-icon.svg'}
       alt='Football News'
       className='h-40 w-full object-cover sm:h-48'

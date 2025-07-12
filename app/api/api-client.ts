@@ -29,13 +29,13 @@ export const apiClient = {
           query: { status },
         })
         if (error) {
-          console.error(`Error fetching news articles:`, error)
+          console.warn(`Error fetching news articles:`, error)
           return []
         }
 
         return data ?? []
       } catch (error) {
-        console.error('Error fetching news articles:', error)
+        console.warn('Error fetching news articles:', error)
         return []
       }
     },
@@ -44,12 +44,12 @@ export const apiClient = {
       try {
         const { data, error } = await findNewsArticleById({ path: { id } })
         if (error) {
-          console.error(`Error fetching news article with id ${id}:`, error)
+          console.warn(`Error fetching news article with id ${id}:`, error)
           return null
         }
         return data ?? null
       } catch (error) {
-        console.error(`Error fetching news article with id ${id}:`, error)
+        console.warn(`Error fetching news article with id ${id}:`, error)
         return null
       }
     },
@@ -65,12 +65,12 @@ export const apiClient = {
           },
         })
         if (error) {
-          console.error(`Error fetching all fixtures:`, error)
+          console.warn(`Error fetching all fixtures:`, error)
           return []
         }
         return data?.content ?? []
       } catch (error) {
-        console.error('Error fetching fixtures:', error)
+        console.warn('Error fetching fixtures:', error)
         return []
       }
     },
@@ -79,12 +79,12 @@ export const apiClient = {
       try {
         const { data, error } = await findFixtureById({ path: { id } })
         if (error) {
-          console.error(`Error fetching highlight with id ${id}:`, error)
+          console.warn(`Error fetching highlight with id ${id}:`, error)
           return null
         }
         return data ?? null
       } catch (error) {
-        console.error(`Error fetching fixture with id ${id}:`, error)
+        console.warn(`Error fetching fixture with id ${id}:`, error)
         return null
       }
     },
@@ -95,12 +95,12 @@ export const apiClient = {
       try {
         const { data, error } = await getAllProducts()
         if (error) {
-          console.error(`Error fetching all products:`, error)
+          console.warn(`Error fetching all products:`, error)
           return []
         }
         return data ?? []
       } catch (error) {
-        console.error('Error fetching ecommerce articles:', error)
+        console.warn('Error fetching ecommerce articles:', error)
         return []
       }
     },
@@ -109,12 +109,12 @@ export const apiClient = {
       try {
         const { data, error } = await getProductById({ path: { id } })
         if (error) {
-          console.error(`Error fetching highlight with id ${id}:`, error)
+          console.warn(`Error fetching highlight with id ${id}:`, error)
           return null
         }
         return data ?? null
       } catch (error) {
-        console.error(`Error fetching ecommerce article with id ${id}:`, error)
+        console.warn(`Error fetching ecommerce article with id ${id}:`, error)
         return null
       }
     },
@@ -125,13 +125,13 @@ export const apiClient = {
       try {
         const { data, error } = await listHighlights({ query: { pageable } })
         if (error) {
-          console.error(`Error fetching highlights:`, error)
+          console.warn(`Error fetching highlights:`, error)
           return []
         }
 
         return data?.content ?? []
       } catch (error) {
-        console.error('Error fetching highlights:', error)
+        console.warn('Error fetching highlights:', error)
         return []
       }
     },
@@ -140,12 +140,12 @@ export const apiClient = {
       try {
         const { data, error } = await findHighlightById({ path: { id } })
         if (error) {
-          console.error(`Error fetching highlight with id ${id}:`, error)
+          console.warn(`Error fetching highlight with id ${id}:`, error)
           return null
         }
         return data ?? null
       } catch (error) {
-        console.error(`Error fetching highlight with id ${id}:`, error)
+        console.warn(`Error fetching highlight with id ${id}:`, error)
         return null
       }
     },
@@ -160,12 +160,12 @@ export const apiClient = {
         })
 
         if (error) {
-          console.error(`Error fetching advertisements:`, error)
+          console.warn(`Error fetching advertisements:`, error)
           return []
         }
         return data?.content ?? []
       } catch (error) {
-        console.error('Error fetching advertisements:', error)
+        console.warn('Error fetching advertisements:', error)
         return []
       }
     },
@@ -176,12 +176,12 @@ export const apiClient = {
           path: { id },
         })
         if (error) {
-          console.error(`Error fetching highlight with id ${id}:`, error)
+          console.warn(`Error fetching highlight with id ${id}:`, error)
           return null
         }
         return data ?? null
       } catch (error) {
-        console.error(`Error fetching advertisement with id ${id}:`, error)
+        console.warn(`Error fetching advertisement with id ${id}:`, error)
         return null
       }
     },
@@ -203,12 +203,12 @@ export const apiClient = {
         })
 
         if (error) {
-          console.error(`Error fetching leagues:`, error)
+          console.warn(`Error fetching leagues:`, error)
           return []
         }
         return data?.content ?? []
       } catch (error) {
-        console.error('Error fetching leagues:', error)
+        console.warn('Error fetching leagues:', error)
         return []
       }
     },
@@ -217,12 +217,12 @@ export const apiClient = {
       try {
         const { data, error } = await findLeagueById({ path: { id } })
         if (error) {
-          console.error(`Error fetching league with id ${id}:`, error)
+          console.warn(`Error fetching league with id ${id}:`, error)
           return null
         }
         return data ?? null
       } catch (error) {
-        console.error(`Error fetching league with id ${id}:`, error)
+        console.warn(`Error fetching league with id ${id}:`, error)
         return null
       }
     },

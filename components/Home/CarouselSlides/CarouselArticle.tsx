@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { CarouselItem } from '@/components/ui/carousel'
 import { apiClient } from '@/app/api/api-client'

@@ -57,7 +57,11 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
             onClick={() => openVideoModal(featuredVideo.videoUrl)}
           >
             <Image
-              src={featuredVideo.thumbnailUrl ?? '/placeholder.svg'}
+              src={
+                featuredVideo.thumbnailUrl
+                  ? featuredVideo.thumbnailUrl
+                  : '/placeholder.svg'
+              }
               alt={featuredVideo.title ?? ''}
               fill
               objectFit='cover'
@@ -94,7 +98,11 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
                   onClick={() => openVideoModal(video.videoUrl)}
                 >
                   <Image
-                    src={video.thumbnailUrl || '/placeholder.svg'}
+                    src={
+                      video.thumbnailUrl
+                        ? video.thumbnailUrl
+                        : '/placeholder.svg'
+                    }
                     alt={video.title || ''}
                     fill
                     objectFit='cover'

@@ -8,10 +8,6 @@ const nextConfig: NextConfig = {
         hostname: 's3.ln-foot.com',
       },
       {
-        protocol: 'https',
-        hostname: 'www.youtube.com',
-      },
-      {
         protocol: 'http',
         hostname: 'localhost',
         port: '9000',

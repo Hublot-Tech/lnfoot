@@ -63,7 +63,7 @@ export function CarouselArticle() {
               <Image
                 src={article.imageUrl}
                 alt={article.title || ''}
-                layout='fill'
+                fill
                 objectFit='cover'
                 className='rounded-xl'
               />

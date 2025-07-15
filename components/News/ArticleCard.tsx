@@ -28,7 +28,7 @@ export default function ArticleCard({ article, isMain }: ArticleCardProps) {
             <Image
               src={article.imageUrl}
               alt={article.title ?? ''}
-              layout='fill'
+              fill
               objectFit='cover'
               className='rounded-lg'
             />

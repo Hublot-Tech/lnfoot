@@ -163,6 +163,7 @@ export const apiClient = {
           console.warn(`Error fetching advertisements:`, error)
           return []
         }
+        console.log('Fetched advertisements:', data)
         return data?.content ?? []
       } catch (error) {
         console.warn('Error fetching advertisements:', error)

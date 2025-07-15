@@ -1,7 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
+import type { HighlightDto } from '@/app/api/generated'
 import {
   Dialog,
   DialogContent,
@@ -14,10 +13,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import { Play } from 'lucide-react'
-import type { HighlightDto } from '@/app/api/generated'
 import { getYouTubeEmbedUrl, isYouTubeUrl } from '@/lib/utils'
+import { Play } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 interface HighlightsClientProps {
   highlights: HighlightDto[]
@@ -59,7 +59,7 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
             <Image
               src={featuredVideo.thumbnailUrl ?? '/placeholder.svg'}
               alt={featuredVideo.title ?? ''}
-              layout='fill'
+              fill
               objectFit='cover'
               className='transition-transform group-hover:scale-105'
             />
@@ -96,7 +96,7 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
                   <Image
                     src={video.thumbnailUrl || '/placeholder.svg'}
                     alt={video.title || ''}
-                    layout='fill'
+                    fill
                     objectFit='cover'
                     className='transition-transform group-hover:scale-105'
                   />

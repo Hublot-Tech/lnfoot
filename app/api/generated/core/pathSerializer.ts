@@ -168,7 +168,7 @@ export const serializeObjectParam = ({
     .map(([key, v]) =>
       serializePrimitiveParam({
         allowReserved,
-        name: style === 'deepObject' ? `${name}[${key}]` : key,
+        name: style === 'deepObject' ? `${name}.${key}` : key,
         value: v as string,
       }),
     )

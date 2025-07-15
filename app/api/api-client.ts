@@ -61,7 +61,7 @@ export const apiClient = {
         const { data, error } = await listFixtures({
           query: {
             leagueApiId,
-            pageable,
+            ...pageable,
           },
         })
         if (error) {
@@ -123,7 +123,7 @@ export const apiClient = {
   highlights: {
     async findAll(pageable: Pageable = DEFAULT_PAGEABLE) {
       try {
-        const { data, error } = await listHighlights({ query: { pageable } })
+        const { data, error } = await listHighlights({ query: pageable })
         if (error) {
           console.warn(`Error fetching highlights:`, error)
           return []
@@ -156,7 +156,7 @@ export const apiClient = {
       try {
         // Assuming getLatestAdvertisements is the correct method
         const { data, error } = await getLatestAdvertisements({
-          query: { pageable },
+          query: pageable,
         })
 
         if (error) {
@@ -198,7 +198,7 @@ export const apiClient = {
           query: {
             country,
             type,
-            pageable,
+            ...pageable,
           },
         })
 

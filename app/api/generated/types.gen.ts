@@ -1209,8 +1209,8 @@ export type ListLeaguesData = {
     query: {
         country?: string;
         type?: string;
-        pageable: Pageable;
-    };
+        // pageable: Pageable;
+    } & Pageable;
     url: '/api/v1/leagues';
 };
 
@@ -1242,9 +1242,7 @@ export type CreateLeagueResponse = CreateLeagueResponses[keyof CreateLeagueRespo
 export type ListHighlightsData = {
     body?: never;
     path?: never;
-    query: {
-        pageable: Pageable;
-    };
+    query: Pageable;
     url: '/api/v1/highlights';
 };
 
@@ -1278,8 +1276,7 @@ export type ListFixturesData = {
     path?: never;
     query: {
         leagueApiId?: string;
-        pageable: Pageable;
-    };
+    } & Pageable;
     url: '/api/v1/fixtures';
 };
 
@@ -1759,9 +1756,7 @@ export type GetFixturesByDateResponse = GetFixturesByDateResponses[keyof GetFixt
 export type GetLatestAdvertisementsData = {
     body?: never;
     path?: never;
-    query: {
-        pageable: Pageable;
-    };
+    query: Pageable;
     url: '/api/v1/advertisements/latest';
 };
 

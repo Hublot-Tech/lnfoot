@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { apiClient } from '../api/api-client'
-import { LiveScore } from '@/components/Home/LiveScores'
+import { LiveScore } from '@/components/Home/live-scores'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 

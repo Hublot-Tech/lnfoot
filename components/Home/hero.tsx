@@ -1,5 +1,5 @@
 import { apiClient } from "@/app/api/api-client";
-import HeroCarousel from "./HeroCarousel";
+import HeroCarousel from "./hero-carousel";
 
 export default async function Hero() {
 	const articles = await apiClient.newsArticles.findAll()

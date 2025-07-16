@@ -1,5 +1,5 @@
 import {apiClient} from "@/app/api/api-client";
-import ArticleCard from "@/components/News/ArticleCard";
+import ArticleCard from "@/components/news/article-card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Suspense } from "react";
 import { ArticleSkeleton } from "@/components/ui/skeletons";

@@ -1,10 +1,10 @@
-import Ads from "@/components/Home/Ads";
-import GetApp from "@/components/Home/GetApp";
-import LatestNews from "@/components/Home/LatestNews";
-import LiveScores from "@/components/Home/LiveScores";
-import PointsForts from "@/components/Home/PointsForts";
-import ShopCarousel from "@/components/Home/ShopCarousel";
-import Hero from "@/components/Home/Hero";
+import Ads from "@/components/Home/ads";
+import GetApp from "@/components/Home/get-app";
+import LatestNews from "@/components/Home/latest-news";
+import LiveScores from "@/components/Home/live-scores";
+import PointsForts from "@/components/Home/points-forts";
+import ShopCarousel from "@/components/Home/shop-carousel";
+import Hero from "@/components/Home/hero";
 
 export default async function Home() {
   // Fetch the latest news article

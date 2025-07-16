@@ -1,5 +1,5 @@
 import { apiClient } from '@/app/api/api-client'
-import { HighlightsClient } from './PointsFortsClient'
+import { HighlightsClient } from './points-forts-client'
 import { Suspense } from 'react'
 import { HighlightsSkeleton } from '@/components/ui/skeletons'
 

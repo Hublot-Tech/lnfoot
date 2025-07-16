@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import { apiClient } from '@/app/api/api-client'
-import Hero from '@/components/Shop/Hero'
+import Hero from '@/components/shop/hero'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

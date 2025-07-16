@@ -5,7 +5,7 @@ import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import DOMPurify from 'isomorphic-dompurify'
-import { calculateReadingTime, formatReadingTime } from '@/lib/readingTime'
+import { calculateReadingTime, formatReadingTime } from '@/lib/reading-time'
 import { ChevronRight, Clock } from 'lucide-react'
 import Image from 'next/image'
 

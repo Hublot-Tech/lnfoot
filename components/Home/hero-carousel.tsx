@@ -2,9 +2,9 @@
 import { NewsArticleDto } from "@/app/api/generated";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"; // Import CarouselContent and CarouselItem
 import Autoplay from "embla-carousel-autoplay";
-import Hero from "../Shop/Hero";
-import { HeroOne } from "./CarouselSlides/HeroOne";
-import HeroSection from "./CarouselSlides/HeroSection";
+import Hero from "../shop/hero";
+import { HeroOne } from "./carousel-slides/hero-one";
+import HeroSection from "./carousel-slides/hero-section";
 
 
 type HeroCarouselProps = {

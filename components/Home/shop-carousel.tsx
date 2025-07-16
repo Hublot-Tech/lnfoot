@@ -1,7 +1,7 @@
 
 import { apiClient } from "@/app/api/api-client";
 import Link from "next/link";
-import { CarouselWithAutoplay } from "./ShopCarouselClient";
+import { CarouselWithAutoplay } from "./shop-carousel-client";
 import { Suspense } from "react";
 import { ShopGridSkeleton } from "@/components/ui/skeletons";
 

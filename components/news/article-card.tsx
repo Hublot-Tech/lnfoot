@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar' // Assuming you have an Avatar component
 import { formatDistanceToNow } from 'date-fns'
 import { fr } from 'date-fns/locale'
-import { calculateReadingTime, formatReadingTime } from '@/lib/readingTime'
+import { calculateReadingTime, formatReadingTime } from '@/lib/reading-time'
 import { NewsArticleDto } from '@/app/api/generated'
 import Image from 'next/image'
 

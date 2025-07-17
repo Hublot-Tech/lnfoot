@@ -45,7 +45,7 @@ export function HighlightsClient({ highlights }: HighlightsClientProps) {
         <h2 className='text-3xl uppercase text-orange-500 font-bold'>
           POINTS FORTS
         </h2>
-        <Link href='/gallery' className='text-orange-500 hover:text-orange-600'>
+        <Link href='/highlights' className='text-orange-500 hover:text-orange-600'>
           voir plus &rarr;
         </Link>
       </div>

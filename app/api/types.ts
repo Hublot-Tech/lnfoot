@@ -31,6 +31,8 @@ export type Highlight = {
   apiHighlightId: string | null;
 };
 
+
+
 export type League = {
   id: string;
   createdAt: Date;

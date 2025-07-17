@@ -48,7 +48,8 @@ export const LiveScore: React.FC<{ match: FixtureDto }> = ({ match }) => {
 
 export default async function LiveScores() {
   const fixtures = await apiClient.fixtures.findAll()
-
+  if (!fixtures || fixtures.length === 0) return null;
+  
   return (
     <section className='bg-transparent py-20 p-4 lg:px-24'>
       <span className='flex justify-between '>

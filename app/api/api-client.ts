@@ -12,6 +12,7 @@ import {
   listLeagues,
   listNewsArticles,
   Pageable,
+  PageHighlightDto,
 } from './generated'
 import { client } from './generated/client.gen'
 
@@ -129,7 +130,7 @@ export const apiClient = {
           return []
         }
 
-        return data?.content ?? []
+        return data as PageHighlightDto
       } catch (error) {
         console.warn('Error fetching highlights:', error)
         return []

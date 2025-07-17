@@ -1,16 +1,13 @@
-// app/(public)/layout.tsx
 'use client'
 
-import { ReactNode } from 'react'
-import Link from 'next/link'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { SearchBar } from '@/components/common/search-bar'
 import { ChevronRight } from 'lucide-react'
-import { Input } from '@/components/ui/input'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { ReactNode, Suspense } from 'react'
 
-export default function PublicLayout({ children }: { children: ReactNode }) {
+export default function ContentPagesLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const query = searchParams.get('q') ?? ''
 
   return (
     <section className='flex items-center py-8'>
@@ -31,17 +28,9 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
         </nav>
 
         {/* Search */}
-        <form method='get' className='my-4 flex justify-center'>
-          <label className='input flex w-full max-w-2xl items-center gap-1 border border-gray-300'>
-            <Input
-              type='search'
-              name='q'
-              placeholder='Search...'
-              defaultValue={query}
-              className='w-full'
-            />
-          </label>
-        </form>
+        <Suspense>
+          <SearchBar />
+        </Suspense>
 
         {/* Page content */}
         {children}

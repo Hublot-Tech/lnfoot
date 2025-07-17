@@ -23,10 +23,6 @@ export default async function HighlightsSection() {
     })
     .slice(0, 9)
 
-  if (!highlights || highlights.length === 0) {
-    return null
-  }
-
   // Vidéo principale (la plus récente)
   const featuredVideo = highlights[0]
   // Reste des vidéos pour le carousel
@@ -53,7 +49,7 @@ export default async function HighlightsSection() {
       )}
 
       {/* Carousel de vidéos */}
-      {carouselVideos.length > 0 && (
+      {carouselVideos?.length > 0 && (
         <Carousel className='w-full'>
           <CarouselContent>
             {carouselVideos.map((video) => (

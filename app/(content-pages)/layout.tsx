@@ -4,17 +4,26 @@ import { SearchBar } from '@/components/common/search-bar'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ReactNode, Suspense } from 'react'
+import { ReactNode, Suspense, useEffect, useState } from 'react'
 
-export default function ContentPagesLayout({ children }: { children: ReactNode }) {
+export default function ContentPagesLayout({
+  children,
+}: {
+  children: ReactNode
+}) {
   const pathname = usePathname()
+  const [title, setTitle] = useState('')
+
+  useEffect(() => {
+    setTitle(document.title ?? '')
+  }, [])
 
   return (
     <section className='flex items-center py-8'>
       <div className='mx-auto w-full max-w-7xl px-4'>
         {/* Breadcrumb */}
         <nav className='mb-6 text-sm'>
-          <ul className='flex items-center space-x-1'>
+          <ul className='flex items-center cursor-pointer space-x-1'>
             <li>
               <Link href='/' className='text-blue-600 hover:text-blue-800'>
                 Acceuil
@@ -22,7 +31,9 @@ export default function ContentPagesLayout({ children }: { children: ReactNode }
             </li>
             <li className='flex items-center gap-1'>
               <ChevronRight className='h-4' />
-              <span className='text-gray-600'>{pathname}</span>
+              <span className='text-gray-600'>
+                {title ?? pathname.slice(1)}
+              </span>
             </li>
           </ul>
         </nav>

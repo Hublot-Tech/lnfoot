@@ -10,9 +10,14 @@ import { Suspense } from 'react'
 import { ArticleGridSkeleton, ArticleSkeleton } from '@/components/ui/skeletons'
 import Image from 'next/image'
 import DOMPurify from 'isomorphic-dompurify'
+import { Metadata } from 'next'
 
 // Nombre d'articles par page
 const ITEMS_PER_PAGE = 6
+
+export const metadata: Metadata = {
+  title: 'Actualités',
+}
 
 export default async function NewsPage(props: {
   searchParams: Promise<{ page?: string }>

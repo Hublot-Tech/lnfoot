@@ -1,13 +1,17 @@
+export const dynamic = 'force-dynamic'
+
 import Link from 'next/link'
 import { apiClient } from '../api/api-client'
-import { LiveScore } from '@/components/Home/live-scores'
+import { LiveScore } from '@/components/home/live-scores'
 import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
-
-export const dynamic = 'force-dynamic'
+import { type Metadata } from 'next'
 
 const pageSize = 5
 
+export const metadata: Metadata = {
+  title: 'Scores en direct',
+}
 export default async function LiveScoresPage(params: {
   searchParams?: Promise<{ page?: string; q?: string }>
 }) {
@@ -150,12 +154,7 @@ export default async function LiveScoresPage(params: {
                 defaultChecked={i === 0}
               />
               <div className='collapse-title flex items-center gap-2 font-semibold'>
-                <Image
-                  fill
-                  src={logoUrl}
-                  alt={name}
-                  className='h-4 w-4'
-                />
+                <Image fill src={logoUrl} alt={name} className='h-4 w-4' />
                 {name}
               </div>
               <div className='collapse-content'>

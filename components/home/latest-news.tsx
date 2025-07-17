@@ -10,7 +10,7 @@ export default function LatestNews() {
     <section className="py-8">
       <div className="mx-auto px-4 lg:px-24">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl uppercase text-orange-500 font-bold">Actualites</h2>
+          <h2 className="text-3xl uppercase text-orange-500 font-bold">Actualités</h2>
           <Link href="/news" className="text-orange-500 hover:text-orange-600">
             Voir plus &rarr;
           </Link>

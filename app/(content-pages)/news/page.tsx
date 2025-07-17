@@ -1,16 +1,15 @@
 export const dynamic = 'force-dynamic'
 
 import { apiClient } from '@/app/api/api-client'
-import { formatDate } from '@/lib/utils'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
 import { NewsCard } from '@/components/sections/news'
-import { ChevronRight } from 'lucide-react'
-import { Suspense } from 'react'
 import { ArticleGridSkeleton, ArticleSkeleton } from '@/components/ui/skeletons'
-import Image from 'next/image'
+import { formatDate } from '@/lib/utils'
 import DOMPurify from 'isomorphic-dompurify'
 import { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
 // Nombre d'articles par page
 const ITEMS_PER_PAGE = 6
@@ -26,34 +25,17 @@ export default async function NewsPage(props: {
   const currentPage = Number(searchParams.page) || 1
 
   return (
-    <section className='min-h-screen bg-gray-50'>
-      <div className='mx-auto max-w-7xl px-4 py-8'>
-        {/* Breadcrumb */}
-        <nav className='mb-6 text-sm'>
-          <ul className='flex items-center space-x-1'>
-            <li>
-              <Link href='/' className='text-blue-600 hover:text-blue-800'>
-                Home
-              </Link>
-            </li>
-            <li>
-              <ChevronRight className='h-4' />
-            </li>
-            <li className='text-gray-600'>News</li>
-          </ul>
-        </nav>
+    <>
+      {/* Latest News */}
+      <Suspense fallback={<ArticleSkeleton isLarge={true} />}>
+        <LatestNewsArticle />
+      </Suspense>
 
-        {/* Latest News */}
-        <Suspense fallback={<ArticleSkeleton isLarge={true} />}>
-          <LatestNewsArticle />
-        </Suspense>
-
-        {/* News Grid */}
-        <Suspense fallback={<ArticleGridSkeleton count={6} />}>
-          <NewsGrid currentPage={currentPage > 1 ? currentPage : 1} />
-        </Suspense>
-      </div>
-    </section>
+      {/* News Grid */}
+      <Suspense fallback={<ArticleGridSkeleton count={6} />}>
+        <NewsGrid currentPage={currentPage > 1 ? currentPage : 1} />
+      </Suspense>
+    </>
   )
 }
 

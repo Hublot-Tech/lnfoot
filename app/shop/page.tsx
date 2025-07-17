@@ -8,6 +8,11 @@ import Link from 'next/link'
 import type { EcommerceArticle } from '../api/types'
 import { ShopGridSkeleton } from '@/components/ui/skeletons'
 import Image from 'next/image'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Nos articles',
+}
 
 export default function ShopPage() {
   const cats = [

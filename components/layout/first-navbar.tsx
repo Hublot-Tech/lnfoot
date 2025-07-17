@@ -7,6 +7,7 @@ const navbarItems = [
   { name: 'Accueil', path: '/' },
   { name: 'Actualités', path: '/news' },
   { name: 'Scores', path: '/live-scores' },
+  { name: 'Point forts', path: '/highlights' },
   { name: 'Shop', path: '/shop' },
   { name: 'Contact', path: '/contact' },
 ]

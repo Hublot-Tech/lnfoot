@@ -28,6 +28,11 @@ export default async function HighlightsSection() {
   // Reste des vidéos pour le carousel
   const carouselVideos = highlights.slice(1)
 
+  console.log('Highlights data:', highlights)
+  console.log('Featured video:', featuredVideo)
+  console.log('Carousel videos:', carouselVideos)
+  console.log("Fetched videos:", data)
+
   return (
     <div className='mx-auto py-20 px-4 lg:px-24'>
       <div className='flex justify-between items-center mb-6'>

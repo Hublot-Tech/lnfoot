@@ -17,6 +17,9 @@ import { client } from './generated/client.gen'
 
 client.setConfig({
   baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000',
+  next: {
+   revalidate: 300,
+  }
 })
 
 const DEFAULT_PAGEABLE: Pageable = { page: 0, size: 10 }

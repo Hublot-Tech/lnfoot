@@ -9,7 +9,6 @@ import {
 import Link from 'next/link'
 import { HighlightCard } from './highlight-card'
 
-
 export default async function HighlightsSection() {
   const data = await apiClient.highlights.findAll()
 
@@ -27,11 +26,6 @@ export default async function HighlightsSection() {
   const featuredVideo = highlights[0]
   // Reste des vidéos pour le carousel
   const carouselVideos = highlights.slice(1)
-
-  console.log('Highlights data:', highlights)
-  console.log('Featured video:', featuredVideo)
-  console.log('Carousel videos:', carouselVideos)
-  console.log("Fetched videos:", data)
 
   return (
     <div className='mx-auto py-20 px-4 lg:px-24'>

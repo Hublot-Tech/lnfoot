@@ -27,7 +27,7 @@ export interface Config<T extends ClientOptions = ClientOptions>
    *
    * Install {@link https://www.npmjs.com/package/@hey-api/client-next `@hey-api/client-next`} instead.
    */
-  next?: never;
+  next?: NextFetchRequestConfig;
   /**
    * Return the response data parsed in a specified format. By default, `auto`
    * will infer the appropriate method from the `Content-Type` response header.

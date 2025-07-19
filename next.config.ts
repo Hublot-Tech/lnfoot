@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 's3.ln-foot.com',
       },
+      
+      {
+        protocol: 'https',
+        hostname: 'media.api-sports.io',
+      },
       {
         protocol: 'http',
         hostname: 'localhost',

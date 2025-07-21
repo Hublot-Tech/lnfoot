@@ -5,7 +5,14 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const formatDate = (date: Date | string | number | null | undefined) => {
+export const formatDate = (
+  date: Date | string | number | null | undefined,
+  options: Intl.DateTimeFormatOptions = {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  },
+) => {
   if (!date) {
     return ''
   }
@@ -15,20 +22,14 @@ export const formatDate = (date: Date | string | number | null | undefined) => {
   if (date instanceof Date) {
     dateObject = date
   } else {
-    // Tenter de convertir en objet Date
     dateObject = new Date(date)
   }
 
-  // Vérifier si la conversion est valide
   if (isNaN(dateObject.getTime())) {
     return ''
   }
 
-  return dateObject.toLocaleDateString('fr', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  })
+  return dateObject.toLocaleDateString('fr', options)
 }
 
 export const isYouTubeUrl = (url?: string | null) => {

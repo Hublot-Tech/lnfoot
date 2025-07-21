@@ -1,48 +1,81 @@
 import { apiClient } from '@/app/api/api-client'
-import { FixtureDto } from '@/app/api/generated'
+import { FixtureDto } from '@/app/api/generated/types.gen'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { formatDate } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-export const LiveScore: React.FC<{ match: FixtureDto }> = ({ match }) => {
+const LiveScoreCard: React.FC<{ match: FixtureDto }> = ({ match }) => {
+  const {
+    homeTeam,
+    awayTeam,
+    scoreFtHome,
+    scoreFtAway,
+    statusShortCode,
+    date,
+    statusDescription,
+  } = match
+
+  const renderScore = () => {
+    if (typeof scoreFtHome === 'number' && typeof scoreFtAway === 'number') {
+      return (
+        <div className='text-2xl font-bold'>
+          {scoreFtHome} - {scoreFtAway}
+        </div>
+      )
+    }
+    return <div className='text-lg'>VS</div>
+  }
+
   return (
-    <div
-      className={`grid ${match.statusDescription === 'inPlay' ? 'animate-pulse' : ''} rounded-lg border bg-[#F1F0F0] p-4`}
+    <Card
+      className={`w-full ${statusDescription === 'inPlay' ? 'animate-pulse' : ''}`}
     >
-      <div>{match.statusShortCode}</div>
-      <div className='flex justify-between font-bold'>
-        <div>
-          {match.homeTeam?.logoUrl && (
+      <CardHeader className='p-4'>
+        <CardTitle className='flex items-center justify-between text-sm'>
+          <span>{statusShortCode}</span>
+          <span className='text-gray-500'>
+            {date
+              ? formatDate(new Date(date), {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })
+              : 'TBD'}
+          </span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className='flex items-center justify-around p-4'>
+        <div className='flex flex-col items-center gap-2 text-center'>
+          {homeTeam?.logoUrl && (
             <Image
-              width={50}
-              height={50}
-              src={match.homeTeam?.logoUrl}
-              alt={match.homeTeam?.name ?? ''}
+              width={40}
+              height={40}
+              src={homeTeam.logoUrl}
+              alt={homeTeam.name ?? 'Home Team'}
             />
           )}
-          {match.homeTeam?.name}
+          <span className='font-semibold'>{homeTeam?.name ?? 'Home'}</span>
         </div>
-        <div>{match.scoreEtHome ?? match.scoreHtHome ?? match.scoreFtHome}</div>
-      </div>
-      <div className='divider divider-end text-green-500'>
-        {formatDate(new Date(match.date ?? Date.now()))}&apos;
-      </div>
-      <div className='flex justify-between font-bold'>
-        <div>
-          {match.awayTeam?.logoUrl && (
+        {renderScore()}
+        <div className='flex flex-col items-center gap-2 text-center'>
+          {awayTeam?.logoUrl && (
             <Image
-              width={50}
-              height={50}
-              src={match.awayTeam?.logoUrl}
-              alt={match.awayTeam?.name ?? ''}
+              width={40}
+              height={40}
+              src={awayTeam.logoUrl}
+              alt={awayTeam.name ?? 'Away Team'}
             />
           )}
-          {match.awayTeam?.name}
+          <span className='font-semibold'>{awayTeam?.name ?? 'Away'}</span>
         </div>
-        <div>{match.scoreEtAway ?? match.scoreHtAway ?? match.scoreFtAway}</div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -50,22 +83,22 @@ export default async function LiveScores() {
   const fixtures = await apiClient.fixtures.findAll()
 
   return (
-    <section className='bg-transparent py-20 p-4 lg:px-24'>
-      <span className='flex justify-between '>
-        <h2 className='text-3xl uppercase text-orange-500 font-bold'>
-          SCORES EN DIRECT
+    <section className='bg-transparent p-4 py-20 lg:px-24'>
+      <div className='mb-4 flex items-center justify-between'>
+        <h2 className='text-3xl font-bold uppercase text-orange-500'>
+          Scores en Direct
         </h2>
         <Link
           href='/live-scores'
           className='text-orange-500 hover:text-orange-600'
         >
-          voir plus &rarr;
+          Voir plus &rarr;
         </Link>
-      </span>
+      </div>
 
-      <div className='grid grid-cols-1 gap-4 mt-4 md:grid-cols-3'>
-        {fixtures.slice(0, 6).map((match, index) => (
-          <LiveScore key={index} match={match} />
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
+        {fixtures.slice(0, 6).map(match => (
+          <LiveScoreCard key={match.id} match={match} />
         ))}
       </div>
     </section>

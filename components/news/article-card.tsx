@@ -84,6 +84,7 @@ export default function ArticleCard({ article, isMain }: ArticleCardProps) {
           <div className='relative w-24 h-24 flex-shrink-0'>
             <Image
               fill
+              objectFit='cover'
               src={article.imageUrl}
               alt={article.title ?? ''}
               className='rounded-md object-cover w-full h-full'

@@ -11,7 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const LiveScoreCard: React.FC<{ match: FixtureDto }> = ({ match }) => {
+export const LiveScoreCard: React.FC<{ fixture: FixtureDto }> = ({ fixture }) => {
   const {
     homeTeam,
     awayTeam,
@@ -20,7 +20,7 @@ const LiveScoreCard: React.FC<{ match: FixtureDto }> = ({ match }) => {
     statusShortCode,
     date,
     statusDescription,
-  } = match
+  } = fixture
 
   const renderScore = () => {
     if (typeof scoreFtHome === 'number' && typeof scoreFtAway === 'number') {
@@ -98,7 +98,7 @@ export default async function LiveScores() {
 
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
         {fixtures.slice(0, 6).map(match => (
-          <LiveScoreCard key={match.id} match={match} />
+          <LiveScoreCard key={match.id} fixture={match} />
         ))}
       </div>
     </section>

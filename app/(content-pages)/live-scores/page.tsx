@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic'
 
-import { LiveScore } from '@/components/home/live-scores'
+import { LiveScoreCard } from '@/components/home/live-scores'
 import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -68,7 +68,7 @@ export default async function LiveScoresPage(params: {
             </div>
             <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
               {scores.map((match, index) => (
-                <LiveScore key={index} match={match} />
+                <LiveScoreCard key={index} fixture={match} />
               ))}
             </div>
             {i !== paginated.length - 1 && (
@@ -114,7 +114,7 @@ export default async function LiveScoresPage(params: {
             <div className='collapse-content'>
               <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
                 {scores.map((match, index) => (
-                  <LiveScore key={index} match={match} />
+                  <LiveScoreCard key={index} fixture={match} />
                 ))}
               </div>
             </div>

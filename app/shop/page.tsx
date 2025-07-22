@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Nos articles',
 }
 
-export default function ShopPage() {
+export default async function ShopPage() {
   const cats = [
     { label: 'Maillots', imageSrc: '/maillots.jpg' },
     { label: 'Équipement', imageSrc: '/alteres.jpg' },

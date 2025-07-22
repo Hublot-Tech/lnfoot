@@ -20,7 +20,6 @@ client.setConfig({
   next: {
     revalidate: 60,
   },
-  cache: 'no-store',
 })
 
 const DEFAULT_PAGEABLE: Pageable = { page: 0, size: 10 }
@@ -30,7 +29,7 @@ export const apiClient = {
     async findAll(status?: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED') {
       try {
         const { data, error } = await listNewsArticles({
-          query: { status },
+          query: { status }
         })
         if (error) {
           console.warn(`Error fetching news articles:`, error)

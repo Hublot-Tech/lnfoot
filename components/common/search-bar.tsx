@@ -9,7 +9,7 @@ export function SearchBar() {
 
   return (
     <form method='get' className='my-4 flex justify-center'>
-      <label className='input flex w-full max-w-2xl items-center gap-1 border border-gray-300'>
+      <label className='input flex w-full max-w-2xl items-center gap-1 border-gray-300'>
         <Input
           type='search'
           name='q'

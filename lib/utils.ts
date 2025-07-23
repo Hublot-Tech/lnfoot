@@ -48,3 +48,20 @@ export function getYouTubeEmbedUrl(url: string): string {
     return ''
   }
 }
+
+export function getYouTubeThumbnailUrl(url: string): string {
+  try {
+    const parsedUrl = new URL(url)
+    let videoId: string | null = null
+
+    if (parsedUrl.hostname.includes('youtu.be')) {
+      videoId = parsedUrl.pathname.slice(1)
+    } else if (parsedUrl.hostname.includes('youtube.com')) {
+      videoId = parsedUrl.searchParams.get('v')
+    }
+
+    return videoId ? `https://img.youtube.com/vi/${videoId}/0.jpg` : ''
+  } catch {
+    return ''
+  }
+}

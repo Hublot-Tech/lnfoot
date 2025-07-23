@@ -6,7 +6,11 @@ import {
   DialogContent,
   DialogTitle,
 } from '@/components/motion-primitives/dialog'
-import { getYouTubeEmbedUrl, isYouTubeUrl } from '@/lib/utils'
+import {
+  getYouTubeEmbedUrl,
+  getYouTubeThumbnailUrl,
+  isYouTubeUrl,
+} from '@/lib/utils'
 import { Play } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -28,10 +32,11 @@ export function HighlightCard({ highlight, size }: HighlightCardProps) {
     }
   }
 
-  const imageSizeClass = size === 'small' ? 'h-6 w-6' : 'h-8 w-8';
-  const titleSizeClass = size === 'small' ? 'text-sm' : 'text-lg';
-  const descriptionSizeClass = size === 'small' ? 'text-xs line-clamp-1' : 'text-sm line-clamp-2';
-  const paddingSize = size === 'small' ? 'p-3' : 'p-4';
+  const imageSizeClass = size === 'small' ? 'h-6 w-6' : 'h-8 w-8'
+  const titleSizeClass = size === 'small' ? 'text-sm' : 'text-lg'
+  const descriptionSizeClass =
+    size === 'small' ? 'text-xs line-clamp-1' : 'text-sm line-clamp-2'
+  const paddingSize = size === 'small' ? 'p-3' : 'p-4'
 
   return (
     <>
@@ -41,9 +46,9 @@ export function HighlightCard({ highlight, size }: HighlightCardProps) {
       >
         <Image
           src={
-            highlight.thumbnailUrl
-              ? highlight.thumbnailUrl
-              : '/placeholder.svg'
+            highlight.thumbnailUrl ??
+            getYouTubeThumbnailUrl(highlight.videoUrl ?? '') ??
+            '/placeholder.svg'
           }
           alt={highlight.title ?? ''}
           fill
@@ -55,7 +60,9 @@ export function HighlightCard({ highlight, size }: HighlightCardProps) {
             <Play className={`${imageSizeClass} text-red-600`} />
           </div>
         </div>
-        <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent ${paddingSize}`}>
+        <div
+          className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent ${paddingSize}`}
+        >
           <h3 className={`text-white ${titleSizeClass} font-medium`}>
             {highlight.title}
           </h3>

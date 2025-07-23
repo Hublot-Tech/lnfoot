@@ -5,15 +5,47 @@ import { notFound } from 'next/navigation'
 import { Download } from 'lucide-react'
 import Image from 'next/image'
 
+import type { Metadata } from 'next'
+
 interface PageProps {
   params: Promise<{
     id: string
   }>
 }
 
-export default async function ShopItem(props: PageProps) {
-  const params = await props.params
-  const article = await apiClient.ecommerceArticles.findOne(params.id)
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> {
+  const article = await apiClient.products.findOne((await params).id)
+
+  if (!article) {
+    return {
+      title: 'Article non trouvé',
+    }
+  }
+
+  return {
+    title: article.name,
+    description: article.description,
+    openGraph: {
+      title: article.name,
+      description: article.description ?? '',
+      images: [
+        {
+          url: article.imageUrl || '/placeholder.svg',
+          width: 1200,
+          height: 630,
+          alt: article.name ?? '',
+        },
+      ],
+    },
+  }
+}
+
+export default async function ShopItem({ params }: PageProps) {
+  const article = await apiClient.products.findOne((await params).id)
 
   if (!article) {
     notFound()

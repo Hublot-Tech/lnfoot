@@ -26,8 +26,8 @@ export default function ShopCarousel() {
 
 async function ShopCarouselContent() {
   // Récupérer tous les articles et limiter à 6
-  const articles = await apiClient.ecommerceArticles.findAll();
-  const featuredArticles = articles?.slice(0, 6) || [];
+  const products = await apiClient.products.findAll();
+  const featuredArticles = products?.slice(0, 6) || [];
 
   return <CarouselWithAutoplay articles={featuredArticles} />;
 }

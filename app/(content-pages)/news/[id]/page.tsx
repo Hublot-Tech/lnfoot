@@ -5,14 +5,54 @@ import { calculateReadingTime, formatReadingTime } from '@/lib/reading-time'
 import { formatDate } from '@/lib/utils'
 import DOMPurify from 'isomorphic-dompurify'
 import { Clock } from 'lucide-react'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-interface UserPageProps {
+interface NewsPageProps {
   params: Promise<{ id: string }>
 }
-export default async function NewsPage({ params }: UserPageProps) {
+
+export async function generateMetadata({
+  params,
+}: NewsPageProps): Promise<Metadata> {
+  const { id } = await params
+  const article = await apiClient.newsArticles.findOne(id)
+
+  if (!article) {
+    return {
+      title: 'Article non trouvé',
+      description: "L'article que vous cherchez n'existe pas ou a été déplacé.",
+    }
+  }
+
+  const metadata: Metadata = {
+    title: article.title,
+    description: article.summary,
+    openGraph: {
+      title: article.title,
+      description: article.summary ?? '',
+      type: 'article',
+      publishedTime: article.publishedAt
+        ? new Date(article.publishedAt).toISOString()
+        : undefined,
+      url: `/news/${article.id}`,
+      images: [
+        {
+          url: article.imageUrl ?? '/default-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
+  }
+
+  return metadata
+}
+
+export default async function NewsPage({ params }: NewsPageProps) {
   const latestNews = await apiClient.newsArticles.findOne((await params).id)
   if (!latestNews) {
     notFound()
@@ -136,12 +176,14 @@ export default async function NewsPage({ params }: UserPageProps) {
               className='overflow-hidden rounded-lg bg-white shadow-md transition hover:shadow-lg'
             >
               <Link href={`/news/${article.id}`} className='block'>
-                <Image
-                  fill
-                  src={article.imageUrl ?? '/ln-icon.svg'}
-                  alt={article.title ?? ''}
-                  className='h-48 w-full object-cover'
-                />
+                <div className='relative h-48 w-full'>
+                  <Image
+                    fill
+                    src={article.imageUrl ?? '/ln-icon.svg'}
+                    alt={article.title ?? ''}
+                    className='object-cover'
+                  />
+                </div>
                 <div className='p-4'>
                   <p className='mb-1 text-sm text-gray-500'>
                     {formatDate(article.publishedAt ?? new Date())}

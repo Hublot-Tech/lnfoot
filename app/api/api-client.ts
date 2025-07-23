@@ -17,9 +17,7 @@ import { client } from './generated/client.gen'
 
 client.setConfig({
   baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000',
-  next: {
-    revalidate: 60,
-  },
+  cache: 'no-store',
 })
 
 const DEFAULT_PAGEABLE: Pageable = { page: 0, size: 10 }
@@ -29,7 +27,7 @@ export const apiClient = {
     async findAll(status?: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED') {
       try {
         const { data, error } = await listNewsArticles({
-          query: { status }
+          query: { status },
         })
         if (error) {
           console.warn(`Error fetching news articles:`, error)
@@ -93,7 +91,7 @@ export const apiClient = {
     },
   },
 
-  ecommerceArticles: {
+  products: {
     async findAll() {
       try {
         const { data, error } = await getAllProducts()

@@ -12,8 +12,9 @@ export default function ContentPagesLayout({
   children: ReactNode
 }) {
   const pathname = usePathname()
+  const titleFromPath = pathname.split('/').filter(Boolean)
   const [title, setTitle] = useState('')
-
+  
   useEffect(() => {
     setTitle(document.title ?? '')
   }, [])
@@ -29,19 +30,28 @@ export default function ContentPagesLayout({
                 Acceuil
               </Link>
             </li>
-            <li className='flex items-center gap-1'>
-              <ChevronRight className='h-4' />
-              <span className='text-gray-600'>
-                {title ?? pathname.slice(1)}
-              </span>
-            </li>
+            {titleFromPath.map((segment, index) => (
+              <li key={index} className='flex items-center gap-1'>
+                <ChevronRight className='h-4' />
+                <Link
+                  href={`/${titleFromPath.slice(0, index + 1).join('/')}`}
+                  className='text-blue-600 hover:text-blue-800'
+                >
+                  {index === titleFromPath.length - 1
+                    ? title || segment
+                    : segment}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
         {/* Search */}
-        <Suspense>
-          <SearchBar />
-        </Suspense>
+        {titleFromPath.length < 2 && (
+          <Suspense>
+            <SearchBar />
+          </Suspense>
+        )}
 
         {/* Page content */}
         {children}

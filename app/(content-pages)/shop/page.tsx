@@ -1,35 +1,45 @@
-import React, { Suspense } from 'react'
 import { apiClient } from '@/app/api/api-client'
-import Hero from '@/components/shop/hero'
+import { ProductDto } from '@/app/api/generated'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import Link from 'next/link'
-import type { EcommerceArticle } from '../api/types'
 import { ShopGridSkeleton } from '@/components/ui/skeletons'
-import Image from 'next/image'
 import { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Nos articles',
 }
 
-export default async function ShopPage() {
-  const cats = [
-    { label: 'Maillots', imageSrc: '/maillots.jpg' },
-    { label: 'Équipement', imageSrc: '/alteres.jpg' },
-    { label: 'Godasses', imageSrc: '/godasses.png' },
-  ]
+const cats = [
+  { label: 'Maillots', imageSrc: '/maillots.jpg' },
+  { label: 'Équipement', imageSrc: '/alteres.jpg' },
+  { label: 'Godasses', imageSrc: '/godasses.png' },
+]
+
+export default async function ShopPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ q?: string }>
+}) {
+  const q = (await searchParams)?.q?.toLowerCase() ?? ''
+  const products = await apiClient.products.findAll()
+
+  const filteredProducts = products.filter((product) =>
+    q
+      ? product.name?.toLowerCase().includes(q) ||
+        product.description?.toLowerCase().includes(q)
+      : true
+  )
+
   return (
     <div className='min-h-screen'>
-      {/* Hero Section */}
-      <Hero />
       {/* Featured Categories */}
       <section className='py-16 bg-gray-50' id='categories'>
         <div className='container mx-auto px-4'>
-          <h2 className='text-3xl font-bold text-center mb-12'>
-            Catégories Populaires
-          </h2>
+          <h2 className='text-3xl font-bold mb-12'>Catégories Populaires</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {cats.map((category) => (
               <div
@@ -63,7 +73,7 @@ export default async function ShopPage() {
             </Button>
           </div>
           <Suspense fallback={<ShopGridSkeleton count={8} />}>
-            <FeaturedProducts />
+            <FeaturedProducts products={filteredProducts} />
           </Suspense>{' '}
         </div>
       </section>
@@ -126,12 +136,10 @@ export default async function ShopPage() {
   )
 }
 
-async function FeaturedProducts() {
-  const products = await apiClient.ecommerceArticles.findAll()
-
+async function FeaturedProducts({ products }: { products: ProductDto[] }) {
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
-      {products.slice(0, 8).map((product: EcommerceArticle) => (
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3'>
+      {products.slice(0, 8).map((product: ProductDto) => (
         <Card key={product.id} className='group'>
           <Link href={`/shop/${product.id}`}>
             <div className='relative aspect-square overflow-hidden'>
